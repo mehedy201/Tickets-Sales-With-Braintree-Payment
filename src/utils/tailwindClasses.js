@@ -1,1 +1,1 @@
-export const tailwindContainerClasses = "xl:max-w-screen-xl lg:max-w-[96%] md:max-w-[96%] sm:max-w-[100%] w-[100%] mx-auto";
+export const tailwindContainerClasses = "xl:max-w-screen-xl lg:max-w-[96%] md:max-w-[96%] sm:max-w-[96%] w-[96%] mx-auto";
