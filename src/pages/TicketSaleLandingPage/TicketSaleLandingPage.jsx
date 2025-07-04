@@ -13,19 +13,32 @@ export const TicketsDataContext = createContext();
 const TicketSaleLandingPage = () => {
 
     const [steps, setSteps] = useState(1)
+    // Quantity ________________________________________
     const [lowTicketsQuantity, setLowTicketsQuantity] = useState(0)
     const [fullTicketsQuantity, setFullTicketsQuantity] = useState(0)
     const [corporateTicketsQuantity, setCorporateTicketsQuantity] = useState(0)
-
+    // Price ___________________________________________
+    const [lowTicketsPrice, setLowTicketsPrice] = useState(0)
+    const [fullTicketsPrice, setFullTicketsPrice] = useState(0)
+    const [corporateTicketsPrice, setCorporateTicketsPrice] = useState(0)
+    const [totalPrice, setTotalParice] = useState(0);
+    // Purcher and Attendees Info Collect ______________
     const [purcherInfo, setPurcherInfo] = useState();
     const [attendeesInfo, setAttendeesInfo] = useState();
     const [paymentInfo, setPaymentInfo] = useState();
 
     const contextValue = {
         setSteps,
+        // Quantity ________________________________________
         lowTicketsQuantity, setLowTicketsQuantity,
         fullTicketsQuantity, setFullTicketsQuantity,
         corporateTicketsQuantity, setCorporateTicketsQuantity,
+        // Price ___________________________________________
+        lowTicketsPrice, setLowTicketsPrice,
+        fullTicketsPrice, setFullTicketsPrice,
+        corporateTicketsPrice, setCorporateTicketsPrice,
+        totalPrice, setTotalParice,
+        // Purcher and Attendees Info Collect ______________
         purcherInfo, setPurcherInfo,
         attendeesInfo, setAttendeesInfo,
         paymentInfo, setPaymentInfo
@@ -79,6 +92,14 @@ const TicketSaleLandingPage = () => {
                         </div>
                         <div className='bg-slate-200 p-4 rounded-md'>
                             <p>Cart</p>
+                            {lowTicketsPrice}
+                            <br />
+                            {fullTicketsPrice}
+                            <br />
+                            {corporateTicketsPrice}
+                            <br />
+                            <br />
+                            {totalPrice}
                         </div>
                     </div>
                 </div>
