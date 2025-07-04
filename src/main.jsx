@@ -5,6 +5,7 @@ import './index.css'
 import TicketSaleLandingPage from './pages/TicketSaleLandingPage/TicketSaleLandingPage.jsx';
 import LoadingComponents from './Components/LoadingComponents.jsx';
 import TicketsComponents from './pages/TicketSaleLandingPage/TicketsComponts/TicketsComponents.jsx';
+const AttendeesInfoComponent = React.lazy(() => import('./pages/TicketSaleLandingPage/TicketsComponts/AttendeesInfoComponent.jsx'));
 
 
 let router = createBrowserRouter([
@@ -14,7 +15,11 @@ let router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Suspense fallback={<LoadingComponents/>}><TicketsComponents/></Suspense>
+        element: <TicketsComponents/>
+      },
+      {
+        path: '/attendees-info',
+        element: <Suspense fallback={<LoadingComponents/>}><AttendeesInfoComponent/></Suspense>
       },
     ]
   },
