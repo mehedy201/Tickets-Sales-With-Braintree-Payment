@@ -2,7 +2,7 @@ import { tailwindContainerClasses } from '../../utils/tailwindClasses';
 import { CiCalendarDate } from "react-icons/ci";
 import { LiaMapMarkerAltSolid } from "react-icons/lia";
 import { IoIosCheckmarkCircle, IoIosArrowForward, IoIosCheckmarkCircleOutline } from "react-icons/io";
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
 export const TicketsDataContext = createContext();
@@ -21,9 +21,9 @@ const TicketSaleLandingPage = () => {
     const [corporateTicketsPrice, setCorporateTicketsPrice] = useState(0)
     const [totalPrice, setTotalParice] = useState(0);
     // Purcher and Attendees Info Collect ______________
-    const [purcherInfo, setPurcherInfo] = useState();
-    const [attendeesInfo, setAttendeesInfo] = useState();
+    const [purcherAttendeesInfo, setPurcherAttendeesInfo] = useState('');
     const [paymentInfo, setPaymentInfo] = useState();
+
 
     const contextValue = {
         steps,setSteps,
@@ -37,11 +37,14 @@ const TicketSaleLandingPage = () => {
         corporateTicketsPrice, setCorporateTicketsPrice,
         totalPrice, setTotalParice,
         // Purcher and Attendees Info Collect ______________
-        purcherInfo, setPurcherInfo,
-        attendeesInfo, setAttendeesInfo,
+        purcherAttendeesInfo, setPurcherAttendeesInfo,
         paymentInfo, setPaymentInfo
     }
 
+    // If user back to second step to first step and change any ticket quantity then purcher attendees if will be remove____
+    useEffect(() => {
+        setPurcherAttendeesInfo('')
+    },[lowTicketsQuantity,fullTicketsQuantity,corporateTicketsQuantity])
 
     return (
         <div>

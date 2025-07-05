@@ -23,6 +23,10 @@ body {
   background-color: white;
 }
 
+.react-tel-input .form-control{
+  width: 100% !important;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
