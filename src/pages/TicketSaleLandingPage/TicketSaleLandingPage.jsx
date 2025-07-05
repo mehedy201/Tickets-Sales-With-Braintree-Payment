@@ -20,6 +20,8 @@ const TicketSaleLandingPage = () => {
     const [fullTicketsPrice, setFullTicketsPrice] = useState(0)
     const [corporateTicketsPrice, setCorporateTicketsPrice] = useState(0)
     const [totalPrice, setTotalParice] = useState(0);
+    // After Price Calculation__________________________
+    const [payAblePrice, setPayAblePrice] = useState();
     // Purcher and Attendees Info Collect ______________
     const [purcherAttendeesInfo, setPurcherAttendeesInfo] = useState('');
     const [paymentInfo, setPaymentInfo] = useState();
@@ -36,6 +38,7 @@ const TicketSaleLandingPage = () => {
         fullTicketsPrice, setFullTicketsPrice,
         corporateTicketsPrice, setCorporateTicketsPrice,
         totalPrice, setTotalParice,
+        payAblePrice, setPayAblePrice,
         // Purcher and Attendees Info Collect ______________
         purcherAttendeesInfo, setPurcherAttendeesInfo,
         paymentInfo, setPaymentInfo

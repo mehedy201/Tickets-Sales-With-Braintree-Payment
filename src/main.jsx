@@ -6,6 +6,7 @@ import TicketSaleLandingPage from './pages/TicketSaleLandingPage/TicketSaleLandi
 import LoadingComponents from './Components/LoadingComponents.jsx';
 import TicketsComponents from './pages/TicketSaleLandingPage/TicketsComponts/TicketsComponents.jsx';
 const AttendeesInfoComponent = React.lazy(() => import('./pages/TicketSaleLandingPage/TicketsComponts/AttendeesInfoComponent.jsx'));
+const PaymentComponent = React.lazy(() => import('./pages/TicketSaleLandingPage/TicketsComponts/PaymentComponent.jsx'));
 
 
 let router = createBrowserRouter([
@@ -20,6 +21,10 @@ let router = createBrowserRouter([
       {
         path: '/attendees-info',
         element: <Suspense fallback={<LoadingComponents/>}><AttendeesInfoComponent/></Suspense>
+      },
+      {
+        path: '/payments',
+        element: <Suspense fallback={<LoadingComponents/>}><PaymentComponent/></Suspense>
       },
     ]
   },
