@@ -129,8 +129,10 @@ const TicketsComponents = () => {
                 </div>
                 {/* Tickets Order summary___________________________________________________ */}
                 {/* ________________________________________________________________________ */}
-                <div className='cols bg-slate-100 p-4 rounded-md'>
-                    <OrderSummaryComponents/>
+                <div className='relative cols'> {/* Add this wrapper */}
+                    <div className='bg-slate-100 p-4 rounded-md sticky top-4 h-[fit-content]'>
+                        <OrderSummaryComponents />
+                    </div>
                 </div>
             </div>
             <div className='flex justify-end'>

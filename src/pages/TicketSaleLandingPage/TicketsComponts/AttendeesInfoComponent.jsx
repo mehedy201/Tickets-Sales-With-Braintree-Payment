@@ -64,22 +64,22 @@ const TicketAttendeeBlock = ({ type, index }) => {
             {/* Input field Part ______________________________________________________  */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
                 <div>
-                    <label className={labelClass}>First Name *</label>
+                    <label className={labelClass}>First Name/Prénom <span className='text-red-500'>*</span></label>
                     <input {...register(`attendees.${attendeeIndex}.firstName`, { required: 'Required' })} className={inputClass} />
                     {errors.attendees?.[attendeeIndex]?.firstName && <p className={errorClass}>{errors.attendees[attendeeIndex].firstName.message}</p>}
                 </div>
                 <div>
-                    <label className={labelClass}>Last Name *</label>
+                    <label className={labelClass}>Last Name/Nom <span className='text-red-500'>*</span></label>
                     <input {...register(`attendees.${attendeeIndex}.lastName`, { required: 'Required' })} className={inputClass} />
                     {errors.attendees?.[attendeeIndex]?.lastName && <p className={errorClass}>{errors.attendees[attendeeIndex].lastName.message}</p>}
                 </div>
                 <div>
-                    <label className={labelClass}>Email *</label>
+                    <label className={labelClass}>Email <span className='text-red-500'>*</span></label>
                     <input type="email" {...register(`attendees.${attendeeIndex}.email`, { required: 'Required' })} className={inputClass} />
                     {errors.attendees?.[attendeeIndex]?.email && <p className={errorClass}>{errors.attendees[attendeeIndex].email.message}</p>}
                 </div>
                 <div>
-                    <label className={labelClass}>Organization</label>
+                    <label className={labelClass}>Organization Name/Nom de l'organisation</label>
                     <input {...register(`attendees.${attendeeIndex}.organizationName`)} className={inputClass} />
                 </div>
             </div>
@@ -92,33 +92,33 @@ const TicketAttendeeBlock = ({ type, index }) => {
                 />
             </div>
             <div className="mt-4">
-                <label className={labelClass}>Restrictions *</label>
-                <input {...register(`attendees.${attendeeIndex}.restrictions`, { required: 'Required' })} className={inputClass} />
-                {errors.attendees?.[attendeeIndex]?.restrictions && <p className={errorClass}>{errors.attendees[attendeeIndex].restrictions.message}</p>}
-            </div>
-            <div className="mt-4">
-                <label className={labelClass}>Require Visa *</label>
+                <label className={labelClass}>Do you require a visa letter of invitation?/Avez-vous besoin d'une lettre d'invitation pour un visa? <span className='text-red-500'>*</span></label>
                 <select {...register(`attendees.${attendeeIndex}.requireVisa`, { required: 'Required' })} className={inputClass}>
-                <option value="NO">NO</option>
-                <option value="YES">YES</option>
+                <option value="NO">No/Non</option>
+                <option value="YES">Yes/Oui</option>
                 </select>
             </div>
             {visaWatch === 'YES' && (
                 <div className="grid grid-cols-1 gap-y-3 mt-4">
                 <div>
-                    <label className={labelClass}>Passport Number *</label>
+                    <label className={labelClass}>Passport Number/Numéro de passeport <span className='text-red-500'>*</span></label>
                     <input {...register(`attendees.${attendeeIndex}.passportNumber`, { required: 'Required' })} className={inputClass} />
                 </div>
                 <div>
-                    <label className={labelClass}>Passport Expiry Date *</label>
+                    <label className={labelClass}>Passport expiry date/Date d'expiration du passeport <span className='text-red-500'>*</span></label>
                     <input type="date" {...register(`attendees.${attendeeIndex}.passportExpiry`, { required: 'Required' })} className={inputClass} />
                 </div>
                 <div>
-                    <label className={labelClass}>Country of Passport *</label>
+                    <label className={labelClass}>Country of passport/Pays du passeport <span className='text-red-500'>*</span></label>
                     <input {...register(`attendees.${attendeeIndex}.countryOfPassport`, { required: 'Required' })} className={inputClass} />
                 </div>
                 </div>
             )}
+            <div className="mt-4">
+                <label className={labelClass}>Please indicate if you have any dietary restrictions/Veuillez indiquer si vous avez des restrictions alimentaires. <span className='text-red-500'>*</span></label>
+                <input {...register(`attendees.${attendeeIndex}.restrictions`, { required: 'Required' })} className={inputClass} />
+                {errors.attendees?.[attendeeIndex]?.restrictions && <p className={errorClass}>{errors.attendees[attendeeIndex].restrictions.message}</p>}
+            </div>
         </div>
     );
 };
@@ -177,17 +177,17 @@ const AttendeesInfoComponent = () => {
                             <h2 className="text-xl font-semibold mb-4">Purcher Information</h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
                                 <div>
-                                    <label className={labelClass}>First Name *</label>
+                                    <label className={labelClass}>First Name/Prénom <span className='text-red-500'>*</span></label>
                                     <input {...register('purcher.firstName', { required: 'Required' })} className={inputClass} />
                                     {errors.purcher?.firstName && <p className={errorClass}>{errors.purcher.firstName.message}</p>}
                                 </div>
                                 <div>
-                                    <label className={labelClass}>Last Name *</label>
+                                    <label className={labelClass}>Last Name/Nom <span className='text-red-500'>*</span></label>
                                     <input {...register('purcher.lastName', { required: 'Required' })} className={inputClass} />
                                     {errors.purcher?.lastName && <p className={errorClass}>{errors.purcher.lastName.message}</p>}
                                 </div>
                                 <div>
-                                    <label className={labelClass}>Email *</label>
+                                    <label className={labelClass}>Email <span className='text-red-500'>*</span></label>
                                     <input type="email" {...register('purcher.email', { required: 'Required' })} className={inputClass} />
                                     {errors.purcher?.email && <p className={errorClass}>{errors.purcher.email.message}</p>}
                                 </div>
@@ -211,8 +211,10 @@ const AttendeesInfoComponent = () => {
                     {/* Pre submit button was here */}
                     </div>
                 </div>
-                <div className='bg-slate-100 p-4 rounded-md'>
-                    <OrderSummaryComponents />
+                <div className='relative cols'> {/* Add this wrapper */}
+                    <div className='bg-slate-100 p-4 rounded-md sticky top-4 h-[fit-content]'>
+                        <OrderSummaryComponents />
+                    </div>
                 </div>
             </div>
             <div className='flex justify-between items-center'>
