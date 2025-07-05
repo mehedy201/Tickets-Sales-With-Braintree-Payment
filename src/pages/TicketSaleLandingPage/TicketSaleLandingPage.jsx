@@ -26,7 +26,7 @@ const TicketSaleLandingPage = () => {
     const [paymentInfo, setPaymentInfo] = useState();
 
     const contextValue = {
-        setSteps,
+        steps,setSteps,
         // Quantity ________________________________________
         lowTicketsQuantity, setLowTicketsQuantity,
         fullTicketsQuantity, setFullTicketsQuantity,

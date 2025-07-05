@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const TicketsComponents = () => {
     const { 
+        steps,setSteps,
         lowTicketsQuantity, setLowTicketsQuantity,
         fullTicketsQuantity, setFullTicketsQuantity,
         corporateTicketsQuantity, setCorporateTicketsQuantity,
@@ -135,7 +136,7 @@ const TicketsComponents = () => {
             <div className='flex justify-end'>
                 {
                     lowTicketsQuantity + fullTicketsQuantity + corporateTicketsQuantity > 0 ? <button 
-                    onClick={() => navigate('/attendees-info')}
+                onClick={() => {navigate('/attendees-info'); setSteps(steps+1)}}
                     className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg cursor-pointer'>Continue</button> : <button className='bg-blue-300 text-white font-bold py-2 px-4 rounded-lg'>Continue</button>
                 }
             </div>
