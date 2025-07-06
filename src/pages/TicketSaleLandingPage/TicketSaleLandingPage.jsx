@@ -4,6 +4,7 @@ import { LiaMapMarkerAltSolid } from "react-icons/lia";
 import { IoIosCheckmarkCircle, IoIosArrowForward, IoIosCheckmarkCircleOutline } from "react-icons/io";
 import { createContext, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import axios from 'axios';
 
 export const TicketsDataContext = createContext();
 
@@ -20,11 +21,14 @@ const TicketSaleLandingPage = () => {
     const [fullTicketsPrice, setFullTicketsPrice] = useState(0)
     const [corporateTicketsPrice, setCorporateTicketsPrice] = useState(0)
     const [totalPrice, setTotalParice] = useState(0);
+    const [cuponCode, setCuponCode] = useState('');
     // After Price Calculation__________________________
-    const [payAblePrice, setPayAblePrice] = useState();
+    const [payAblePrice, setPayAblePrice] = useState(12);
     // Purcher and Attendees Info Collect ______________
     const [purcherAttendeesInfo, setPurcherAttendeesInfo] = useState('');
     const [paymentInfo, setPaymentInfo] = useState();
+    // Braintree Client Token___________________________
+    const [clientToken, setClientToken] = useState(null);
 
 
     const contextValue = {
@@ -39,15 +43,33 @@ const TicketSaleLandingPage = () => {
         corporateTicketsPrice, setCorporateTicketsPrice,
         totalPrice, setTotalParice,
         payAblePrice, setPayAblePrice,
+        cuponCode, setCuponCode,
         // Purcher and Attendees Info Collect ______________
         purcherAttendeesInfo, setPurcherAttendeesInfo,
-        paymentInfo, setPaymentInfo
+        paymentInfo, setPaymentInfo,
+        // Braintree Client Token___________________________
+        clientToken, setClientToken
     }
 
     // If user back to second step to first step and change any ticket quantity then purcher attendees if will be remove____
     useEffect(() => {
         setPurcherAttendeesInfo('')
     },[lowTicketsQuantity,fullTicketsQuantity,corporateTicketsQuantity])
+
+    // Get Braintree Client Token From API______________________________
+    useEffect(() => {
+        const fetchTokenAndInit = async () => {
+            try {
+            const { data } = await axios.get('http://localhost:5000/client-token');
+            setClientToken(data.clientToken);
+            } catch (err) {
+            console.error('Failed to fetch token', err);
+            }
+        };
+        fetchTokenAndInit();
+    }, []);
+
+
 
     return (
         <div>

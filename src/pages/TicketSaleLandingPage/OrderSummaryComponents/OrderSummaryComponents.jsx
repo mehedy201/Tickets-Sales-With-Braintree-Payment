@@ -13,7 +13,8 @@ const OrderSummaryComponents = () => {
         fullTicketsPrice, 
         corporateTicketsPrice,
         totalPrice,
-        payAblePrice, setPayAblePrice
+        payAblePrice, setPayAblePrice,
+        cuponCode, setCuponCode,
     } = useContext(TicketsDataContext);
 
     const [taxAmount, setTaxAmount] = useState(0);
@@ -43,7 +44,6 @@ const OrderSummaryComponents = () => {
     },[lowTicketsQuantity, fullTicketsQuantity, corporateTicketsQuantity])
 
     const [cuponErr, setCuponErr] = useState('');
-    const [cuponCode, setCuponCode] = useState('');
     const [isCuponCodeTrue, setIsCuponCodeTrue] = useState(false)
     const [cuponDiscountAmount, setCuponDiscountAmount] = useState('')
     const cuponCodeHandle = () => {
