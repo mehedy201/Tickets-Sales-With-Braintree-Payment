@@ -49,7 +49,6 @@ const OrderSummaryComponents = () => {
     const cuponCodeHandle = () => {
         setCuponErr('')
         setIsCuponCodeTrue(false)
-        console.log(cuponCode)
         if(payAblePrice > 0){
             if(cuponCode){
                 if(cuponCode === 'Mehedi'){

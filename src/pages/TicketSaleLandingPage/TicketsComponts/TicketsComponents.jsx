@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { TicketsDataContext } from "../TicketSaleLandingPage";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import OrderSummaryComponents from "../OrderSummaryComponents/OrderSummaryComponents";
@@ -16,10 +16,14 @@ const TicketsComponents = () => {
         fullTicketsPrice, setFullTicketsPrice,
         corporateTicketsPrice, setCorporateTicketsPrice,
         totalPrice, setTotalParice,
+        cuponCode, setCuponCode
     } = useContext(TicketsDataContext);
-
+    
     const navigate = useNavigate();
-
+    
+    useEffect(() => {
+        if(cuponCode)setCuponCode('')
+    },[])
 
     return (
         <>
@@ -137,9 +141,9 @@ const TicketsComponents = () => {
             </div>
             <div className='flex justify-end'>
                 {
-                    lowTicketsQuantity + fullTicketsQuantity + corporateTicketsQuantity > 0 ? <button 
+                    lowTicketsQuantity + fullTicketsQuantity + corporateTicketsQuantity > 0 ? <span 
                 onClick={() => {navigate('/attendees-info'); setSteps(steps+1)}}
-                    className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg cursor-pointer'>Continue</button> : <button className='bg-blue-300 text-white font-bold py-2 px-4 rounded-lg'>Continue</button>
+                    className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg cursor-pointer'>Continue</span> : <button className='bg-blue-300 text-white font-bold py-2 px-4 rounded-lg'>Continue</button>
                 }
             </div>
         </>

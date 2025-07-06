@@ -49,9 +49,7 @@ const PaymentComponent = () => {
     const handlePayment = async () => {
         setLoading(true);
         setMessage('');
-        console.log('yes')
         if (!dropinInstance.current) return;
-        console.log('no')
 
         try {
         const { nonce } = await dropinInstance.current.requestPaymentMethod({
@@ -109,26 +107,26 @@ const PaymentComponent = () => {
                 </div>
             </div>
             <div className='flex justify-between items-center'>
-                <button
+                <span
                     onClick={() => {navigate('/attendees-info'); setSteps(steps-1)}}
                     className="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600 transition cursor-pointer"
                 >
                     Previous
-                </button>
+                </span>
                 {/* <button
                     type="submit"
                     className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition cursor-pointer"
                 >
                     Pay
                 </button>  */}
-                <button
+                <span
                     
                     onClick={handlePayment}
                     disabled={loading || !dropinInstance.current}
                     className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
                 >
                     {loading ? 'Processing...' : `Pay`}
-                </button>
+                </span>
             </div>
         </>
     );

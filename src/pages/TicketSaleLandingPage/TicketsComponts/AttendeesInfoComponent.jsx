@@ -130,10 +130,12 @@ const AttendeesInfoComponent = () => {
         fullTicketsQuantity,
         corporateTicketsQuantity, 
         purcherAttendeesInfo, setPurcherAttendeesInfo,
+        cuponCode, setCuponCode
     } = useContext(TicketsDataContext);
 
     const navigate = useNavigate();
     useEffect( () => {
+        if(cuponCode)setCuponCode('')
         if(lowTicketsQuantity+fullTicketsQuantity+corporateTicketsQuantity ==0)navigate('/')
     }, [])
 
@@ -157,9 +159,9 @@ const AttendeesInfoComponent = () => {
     const { register, handleSubmit, watch, setValue, trigger, formState: { errors } } = methods;
 
     const onSubmit = (data) => {
+        setSteps(3)
         console.log('Final Data:', data);
         setPurcherAttendeesInfo(data)
-        setSteps(steps+1)
         navigate('/payments')
     };    
 
