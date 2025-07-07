@@ -29,6 +29,8 @@ const TicketSaleLandingPage = () => {
     const [paymentInfo, setPaymentInfo] = useState();
     // Braintree Client Token___________________________
     const [clientToken, setClientToken] = useState(null);
+    // Success Buy Tickets Data_________________________
+    const [successData, setSuccessData] = useState();
 
 
     const contextValue = {
@@ -48,7 +50,9 @@ const TicketSaleLandingPage = () => {
         purcherAttendeesInfo, setPurcherAttendeesInfo,
         paymentInfo, setPaymentInfo,
         // Braintree Client Token___________________________
-        clientToken, setClientToken
+        clientToken, setClientToken,
+         // Success Buy Tickets Data_________________________
+        successData, setSuccessData,
     }
 
     // If user back to second step to first step and change any ticket quantity then purcher attendees if will be remove____

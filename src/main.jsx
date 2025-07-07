@@ -7,6 +7,7 @@ import LoadingComponents from './Components/LoadingComponents.jsx';
 import TicketsComponents from './pages/TicketSaleLandingPage/TicketsComponts/TicketsComponents.jsx';
 const AttendeesInfoComponent = React.lazy(() => import('./pages/TicketSaleLandingPage/TicketsComponts/AttendeesInfoComponent.jsx'));
 const PaymentComponent = React.lazy(() => import('./pages/TicketSaleLandingPage/TicketsComponts/PaymentComponent.jsx'));
+const TicketBuySuccessResultComponent = React.lazy(() => import('./pages/TicketSaleLandingPage/TicketsComponts/TicketBuySuccessResultComponent.jsx'));
 
 
 let router = createBrowserRouter([
@@ -25,6 +26,10 @@ let router = createBrowserRouter([
       {
         path: '/payments',
         element: <Suspense fallback={<LoadingComponents/>}><PaymentComponent/></Suspense>
+      },
+      {
+        path: '/success',
+        element: <Suspense fallback={<LoadingComponents/>}><TicketBuySuccessResultComponent/></Suspense>
       },
     ]
   },

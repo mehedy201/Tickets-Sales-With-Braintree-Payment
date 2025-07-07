@@ -15,6 +15,7 @@ const PaymentComponent = () => {
         fullTicketsQuantity,
         corporateTicketsQuantity,
         purcherAttendeesInfo,
+        setSuccessData,
     } = useContext(TicketsDataContext);
     const navigate = useNavigate();
 
@@ -77,6 +78,7 @@ const PaymentComponent = () => {
         });
 
         if (response.data.success) {
+            setSuccessData(response.data.summary)
             const summary = response.data.summary;
             console.log("Response", response)
             setMessage(
@@ -108,7 +110,6 @@ const PaymentComponent = () => {
             <div className='py-4 grid md:grid-cols-3 gap-4'>
                 <div className='cols md:col-span-2'>
                     {/* Payment____________________________________________________________ */}
-                    <span onClick={dataCheck}>post</span>
                     <OrderSummaryComponents />
                     
                 </div>
