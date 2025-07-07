@@ -7,13 +7,14 @@ import axios from 'axios';
 
 const PaymentComponent = () => {
     const { 
-        steps,setSteps,
+        setSteps,
         payAblePrice,
         cuponCode,
         clientToken, setClientToken,
         lowTicketsQuantity,
         fullTicketsQuantity,
         corporateTicketsQuantity,
+        purcherAttendeesInfo,
     } = useContext(TicketsDataContext);
     const navigate = useNavigate();
 
@@ -24,9 +25,8 @@ const PaymentComponent = () => {
 
     useEffect(() => {
         if(!clientToken){
-            console.log('Dont have client')
             const getClientToken = async () => {
-            const res = await axios.get('http://localhost:5000/client-token');
+            const res = await axios.get('http://localhost:5000/api/v1/icghc/client-token');
             setClientToken(res.data.clientToken);
             };
             getClientToken();
@@ -51,6 +51,16 @@ const PaymentComponent = () => {
         setMessage('');
         if (!dropinInstance.current) return;
 
+        const cleanedAttendees = purcherAttendeesInfo.attendees.slice(0, -1)
+        const updatedAttendees = cleanedAttendees.map(att => ({
+            ...att,
+            purcher: purcherAttendeesInfo.purcher
+        }));
+
+
+        console.log('Final Data:', updatedAttendees);
+        console.log('Final Purcher:', purcherAttendeesInfo.purcher);
+
         try {
         const { nonce } = await dropinInstance.current.requestPaymentMethod({
             threeDSecure: {
@@ -58,7 +68,7 @@ const PaymentComponent = () => {
             },
         });
 
-        const response = await axios.post('http://localhost:5000/checkout', {
+        const response = await axios.post('http://localhost:5000/api/v1/icghc/checkout', {
             nonce,
             lowTicketsQuantity,
             fullTicketsQuantity,
@@ -85,11 +95,20 @@ const PaymentComponent = () => {
         }
     };
 
+    const dataCheck = () => {
+        const data = {name: 'mehedi', phone: '111'}
+        axios.post(`http://localhost:5000/api/v1/icghc/check-mongodb`, data)
+        .then(res => {
+            console.log(res)
+        })
+    }
+
     return (
         <>
             <div className='py-4 grid md:grid-cols-3 gap-4'>
                 <div className='cols md:col-span-2'>
                     {/* Payment____________________________________________________________ */}
+                    <span onClick={dataCheck}>post</span>
                     <OrderSummaryComponents />
                     
                 </div>
@@ -108,17 +127,11 @@ const PaymentComponent = () => {
             </div>
             <div className='flex justify-between items-center'>
                 <span
-                    onClick={() => {navigate('/attendees-info'); setSteps(steps-1)}}
+                    onClick={() => {navigate('/attendees-info'); setSteps(2)}}
                     className="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600 transition cursor-pointer"
                 >
                     Previous
                 </span>
-                {/* <button
-                    type="submit"
-                    className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition cursor-pointer"
-                >
-                    Pay
-                </button>  */}
                 <span
                     
                     onClick={handlePayment}

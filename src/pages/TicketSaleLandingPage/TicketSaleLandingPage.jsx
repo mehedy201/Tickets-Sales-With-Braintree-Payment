@@ -60,7 +60,7 @@ const TicketSaleLandingPage = () => {
     useEffect(() => {
         const fetchTokenAndInit = async () => {
             try {
-            const { data } = await axios.get('http://localhost:5000/client-token');
+            const { data } = await axios.get('http://localhost:5000/api/v1/icghc/client-token');
             setClientToken(data.clientToken);
             } catch (err) {
             console.error('Failed to fetch token', err);

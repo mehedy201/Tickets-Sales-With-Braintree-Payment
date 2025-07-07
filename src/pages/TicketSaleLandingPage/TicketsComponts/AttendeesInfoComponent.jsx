@@ -10,7 +10,7 @@ const inputClass = "w-full border border-gray-300 rounded-md px-3 py-1.5 text-sm
 const labelClass = "block text-sm font-medium text-gray-700 mb-1";
 const errorClass = "text-red-500 text-xs mt-1";
 
-const TicketAttendeeBlock = ({ type, index }) => {
+const TicketAttendeeBlock = ({ type, index, price }) => {
     const { register, watch, setValue, formState: { errors } } = useFormContext();
     const { fields, append } = useFieldArray({ name: 'attendees' });
 
@@ -19,6 +19,7 @@ const TicketAttendeeBlock = ({ type, index }) => {
         if (sameTypeFields.length <= index) {
         append({
             ticketsType: type,
+            price: price,
             firstName: '',
             lastName: '',
             email: '',
@@ -207,9 +208,9 @@ const AttendeesInfoComponent = () => {
 
                         <div className="mb-6">
                             <h2 className="text-xl font-semibold mb-4">Attendees</h2>
-                            {lowTicketNumbers.map((i) => <TicketAttendeeBlock key={`low-${i}`} type="Low and Middle Income Countries" index={i} />)}
-                            {fullTicketNumbers.map((i) => <TicketAttendeeBlock key={`full-${i}`} type="Full Conference Registration" index={i} />)}
-                            {corporateTicketNumbers.map((i) => <TicketAttendeeBlock key={`corp-${i}`} type="Corporate" index={i} />)}
+                            {lowTicketNumbers.map((i) => <TicketAttendeeBlock key={`low-${i}`} type="Low and Middle Income Countries" index={i} price={440}/>)}
+                            {fullTicketNumbers.map((i) => <TicketAttendeeBlock key={`full-${i}`} type="Full Conference Registration" index={i} price={500}/>)}
+                            {corporateTicketNumbers.map((i) => <TicketAttendeeBlock key={`corp-${i}`} type="Corporate" index={i} price={550}/>)}
                         </div>
                     {/* Pre submit button was here */}
                     </div>
