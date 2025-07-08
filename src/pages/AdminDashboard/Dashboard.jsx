@@ -1,9 +1,15 @@
 import { CiCalendarDate } from 'react-icons/ci';
 import { LiaMapMarkerAltSolid } from 'react-icons/lia';
-import { Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { tailwindContainerClasses } from '../../utils/tailwindClasses';
 
 const Dashboard = () => {
+
+    const location = useLocation();
+  const path = location.pathname;
+  const isAttendees = path.startsWith('/dashboard/') && !path.includes('/purcher');
+  const isPurcher = path.includes('/dashboard/purcher');
+
     return (
         <div>
             {/* Events Tittle_______________________________________________________ */}
@@ -28,6 +34,11 @@ const Dashboard = () => {
             {/* ________________________________________________________________________ */}
             <div style={{marginTop: '-48px'}} className={tailwindContainerClasses}>
                 <div className='bg-white mb-4 rounded-lg p-4'>
+                    <h2 className='font-bold text-xl pb-3'>Dashboard</h2>
+                    <nav className='flex items-center gap-4'>
+                        <NavLink to="/dashboard/1/10" className={isAttendees ? 'active' : ''}>Attendees</NavLink>
+                        <NavLink to="/dashboard/purcher/1/10" className={isPurcher ? 'active' : ''}>Purcher</NavLink>
+                    </nav>
                     <Outlet/>
                 </div>
             </div>

@@ -7,6 +7,7 @@ import LoadingComponents from './Components/LoadingComponents.jsx';
 import TicketsComponents from './pages/TicketSaleLandingPage/TicketsComponts/TicketsComponents.jsx';
 import axios from 'axios';
 import Dashboard from './pages/AdminDashboard/Dashboard.jsx';
+import Attendees from './pages/AdminDashboard/Attendees/Attendees.jsx';
 const AttendeesInfoComponent = React.lazy(() => import('./pages/TicketSaleLandingPage/TicketsComponts/AttendeesInfoComponent.jsx'));
 const PaymentComponent = React.lazy(() => import('./pages/TicketSaleLandingPage/TicketsComponts/PaymentComponent.jsx'));
 const TicketBuySuccessResultComponent = React.lazy(() => import('./pages/TicketSaleLandingPage/TicketsComponts/TicketBuySuccessResultComponent.jsx'));
@@ -18,7 +19,7 @@ let router = createBrowserRouter([
     element: <TicketSaleLandingPage/>,
     children: [
       {
-        path: '/',
+        index: true, 
         element: <TicketsComponents/>
       },
       {
@@ -41,8 +42,12 @@ let router = createBrowserRouter([
     element: <Dashboard/>,
     children: [
       {
-        path: '/dashboard',
-        element: 'dashboard'
+        path: ':page/:limit', 
+        element: <Attendees/>
+      },
+      {
+        path: 'purcher/:page/:limit',
+        element: 'Purcher'
       },
       
     ]
