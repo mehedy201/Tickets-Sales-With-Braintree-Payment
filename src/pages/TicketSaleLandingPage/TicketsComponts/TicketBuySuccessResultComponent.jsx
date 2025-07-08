@@ -1,9 +1,10 @@
 import { FaCircleCheck } from "react-icons/fa6";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 
 const TicketBuySuccessResultComponent = () => {
 
+    const navigate = useNavigate();
     const {data} = useLoaderData();
 
     return (
@@ -94,6 +95,10 @@ const TicketBuySuccessResultComponent = () => {
                         </div>
                     )
                 }
+            </div>
+            <div className="flex items-center gap-3 justify-center py-8">
+                <a className="bg-green-500 px-4 py-2 rounded-md text-white font-bold cursor-pointer hover:text-white" href="https://icghc.org/" target="_blank">Back to Site</a>
+                <button onClick={() => navigate('/')} className="bg-green-500 px-4 py-2 rounded-md text-white font-bold cursor-pointer">Purches new Tickets</button>
             </div>
         </div>
     );
