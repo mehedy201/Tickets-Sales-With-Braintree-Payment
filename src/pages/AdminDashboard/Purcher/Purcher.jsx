@@ -26,7 +26,6 @@ const Purcher = () => {
                     setPurcherData(res.data.data)
                     setTotalPage(res.data.totalPages)
                     setTotalDataCount(res.data.totalCount)
-                    console.log(res.data.data)
                 }
             })
         }, [search, page])
@@ -63,6 +62,7 @@ const Purcher = () => {
                             <h3 className="text-xl font-semibold">{purcher?.purcher?.firstName} {purcher?.purcher?.lastName}</h3>
                             <p>{purcher?.purcher?.email}</p>
                         </div>
+                        <a style={{textDecoration: 'none'}} href={`http://localhost:5000/api/v1/icghc/download-single-purcher-details/${purcher._id}`}>Download Purcher Details</a>
                     </div>
                 )
             }
