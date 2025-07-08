@@ -2,13 +2,15 @@ import { CiCalendarDate } from 'react-icons/ci';
 import { LiaMapMarkerAltSolid } from 'react-icons/lia';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { tailwindContainerClasses } from '../../utils/tailwindClasses';
+import auth from '../../../firebase.config';
 
 const Dashboard = () => {
 
+    console.log(auth)
     const location = useLocation();
-  const path = location.pathname;
-  const isAttendees = path.startsWith('/dashboard/') && !path.includes('/purcher');
-  const isPurcher = path.includes('/dashboard/purcher');
+    const path = location.pathname;
+    const isAttendees = path.startsWith('/dashboard/') && !path.includes('/purcher');
+    const isPurcher = path.includes('/dashboard/purcher');
 
     return (
         <div>
