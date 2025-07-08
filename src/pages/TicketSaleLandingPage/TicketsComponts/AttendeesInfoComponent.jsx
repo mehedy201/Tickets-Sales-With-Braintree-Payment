@@ -137,7 +137,7 @@ const AttendeesInfoComponent = () => {
     const navigate = useNavigate();
     useEffect( () => {
         if(cuponCode)setCuponCode('')
-        if(lowTicketsQuantity+fullTicketsQuantity+corporateTicketsQuantity ==0)navigate('/')
+        if(lowTicketsQuantity+fullTicketsQuantity+corporateTicketsQuantity ==0){navigate('/'); setSteps(1)}
     }, [])
 
     const lowTicketNumbers = Array.from({ length: lowTicketsQuantity }, (_, i) => i);

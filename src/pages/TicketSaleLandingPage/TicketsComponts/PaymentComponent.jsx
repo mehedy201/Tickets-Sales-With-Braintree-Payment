@@ -28,7 +28,7 @@ const PaymentComponent = () => {
 
     useEffect( () => {
         if(lowTicketsQuantity+fullTicketsQuantity+corporateTicketsQuantity ==0)navigate('/')
-        if(!purcherAttendeesInfo)navigate('/')
+        if(!purcherAttendeesInfo){navigate('/'); setSteps(1)}
     }, [])
 
     const dropinInstance = useRef(null);
