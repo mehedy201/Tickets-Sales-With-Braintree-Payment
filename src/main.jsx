@@ -7,10 +7,12 @@ import LoadingComponents from './Components/LoadingComponents.jsx';
 import TicketsComponents from './pages/TicketSaleLandingPage/TicketsComponts/TicketsComponents.jsx';
 import axios from 'axios';
 import Dashboard from './pages/AdminDashboard/Dashboard.jsx';
-import Attendees from './pages/AdminDashboard/Attendees/Attendees.jsx';
 const AttendeesInfoComponent = React.lazy(() => import('./pages/TicketSaleLandingPage/TicketsComponts/AttendeesInfoComponent.jsx'));
 const PaymentComponent = React.lazy(() => import('./pages/TicketSaleLandingPage/TicketsComponts/PaymentComponent.jsx'));
 const TicketBuySuccessResultComponent = React.lazy(() => import('./pages/TicketSaleLandingPage/TicketsComponts/TicketBuySuccessResultComponent.jsx'));
+// Admin Route Component _____
+const Attendees = React.lazy(() => import('./pages/AdminDashboard/Attendees/Attendees.jsx'));
+const Purcher = React.lazy(() => import('./pages/AdminDashboard/Purcher/Purcher.jsx'));
 
 
 let router = createBrowserRouter([
@@ -43,11 +45,11 @@ let router = createBrowserRouter([
     children: [
       {
         path: ':page/:limit', 
-        element: <Attendees/>
+        element: <Suspense fallback={<LoadingComponents/>}><Attendees/></Suspense>
       },
       {
         path: 'purcher/:page/:limit',
-        element: 'Purcher'
+        element: <Suspense fallback={<LoadingComponents/>}><Purcher/></Suspense>
       },
       
     ]
