@@ -46,15 +46,9 @@ const TicketSaleLandingPage = () => {
         cuponCode, setCuponCode,
         // Purcher and Attendees Info Collect ______________
         purcherAttendeesInfo, setPurcherAttendeesInfo,
-        // paymentInfo, setPaymentInfo,
         // Braintree Client Token___________________________
         clientToken, setClientToken,
     }
-
-    // If user back to second step to first step and change any ticket quantity then purcher attendees if will be remove____
-    useEffect(() => {
-        setPurcherAttendeesInfo('')
-    },[lowTicketsQuantity,fullTicketsQuantity,corporateTicketsQuantity])
 
     // Get Braintree Client Token From API______________________________
     useEffect(() => {
