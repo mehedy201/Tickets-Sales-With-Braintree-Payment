@@ -79,7 +79,7 @@ const TicketSaleLandingPage = () => {
                         </div>
                         <div className='flex items-center gap-1'>
                             <LiaMapMarkerAltSolid size={18} color="white"/>
-                            <p className='text-white text-sm'>Oct 19 to 22, 2025</p>
+                            <p className='text-white text-sm'>Québec, Quebec - Canada</p>
                         </div>
                     </div>
                 </div>
