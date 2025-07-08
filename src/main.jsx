@@ -7,6 +7,8 @@ import LoadingComponents from './Components/LoadingComponents.jsx';
 import TicketsComponents from './pages/TicketSaleLandingPage/TicketsComponts/TicketsComponents.jsx';
 import axios from 'axios';
 import Dashboard from './pages/AdminDashboard/Dashboard.jsx';
+import LogIn from './pages/LogIn/LogIn.jsx';
+import ProtectRoute from './pages/ProtectRoute/ProtectRoute.jsx';
 const AttendeesInfoComponent = React.lazy(() => import('./pages/TicketSaleLandingPage/TicketsComponts/AttendeesInfoComponent.jsx'));
 const PaymentComponent = React.lazy(() => import('./pages/TicketSaleLandingPage/TicketsComponts/PaymentComponent.jsx'));
 const TicketBuySuccessResultComponent = React.lazy(() => import('./pages/TicketSaleLandingPage/TicketsComponts/TicketBuySuccessResultComponent.jsx'));
@@ -45,14 +47,18 @@ let router = createBrowserRouter([
     children: [
       {
         path: ':page/:limit', 
-        element: <Suspense fallback={<LoadingComponents/>}><Attendees/></Suspense>
+        element: <Suspense fallback={<LoadingComponents/>}><ProtectRoute><Attendees/></ProtectRoute></Suspense>
       },
       {
         path: 'purcher/:page/:limit',
-        element: <Suspense fallback={<LoadingComponents/>}><Purcher/></Suspense>
+        element: <Suspense fallback={<LoadingComponents/>}><ProtectRoute><Purcher/></ProtectRoute></Suspense>
       },
       
     ]
+  },
+  {
+    path: "/log-in",
+    element: <LogIn/>
   },
 ]);
 
