@@ -161,7 +161,6 @@ const AttendeesInfoComponent = () => {
 
     const onSubmit = (data) => {
         setSteps(3)
-        console.log('Final Data:', data);
         setPurcherAttendeesInfo(data)
         navigate('/payments')
     };    

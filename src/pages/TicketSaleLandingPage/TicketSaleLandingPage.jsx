@@ -23,14 +23,12 @@ const TicketSaleLandingPage = () => {
     const [totalPrice, setTotalParice] = useState(0);
     const [cuponCode, setCuponCode] = useState('');
     // After Price Calculation__________________________
-    const [payAblePrice, setPayAblePrice] = useState(12);
+    const [payAblePrice, setPayAblePrice] = useState(0);
     // Purcher and Attendees Info Collect ______________
     const [purcherAttendeesInfo, setPurcherAttendeesInfo] = useState('');
-    const [paymentInfo, setPaymentInfo] = useState();
     // Braintree Client Token___________________________
     const [clientToken, setClientToken] = useState(null);
-    // Success Buy Tickets Data_________________________
-    const [successData, setSuccessData] = useState();
+
 
 
     const contextValue = {
@@ -48,11 +46,9 @@ const TicketSaleLandingPage = () => {
         cuponCode, setCuponCode,
         // Purcher and Attendees Info Collect ______________
         purcherAttendeesInfo, setPurcherAttendeesInfo,
-        paymentInfo, setPaymentInfo,
+        // paymentInfo, setPaymentInfo,
         // Braintree Client Token___________________________
         clientToken, setClientToken,
-         // Success Buy Tickets Data_________________________
-        successData, setSuccessData,
     }
 
     // If user back to second step to first step and change any ticket quantity then purcher attendees if will be remove____

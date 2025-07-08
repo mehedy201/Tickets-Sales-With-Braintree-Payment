@@ -4,21 +4,32 @@ import { useNavigate } from 'react-router-dom';
 import { TicketsDataContext } from '../TicketSaleLandingPage';
 import dropin from 'braintree-web-drop-in';
 import axios from 'axios';
+import useAttendeesSpecificTicketTaxDiscountCalculate from '../../../hooks/useAttendeesSpecificTicketTaxDiscountCalculate';
 
 const PaymentComponent = () => {
     const { 
         setSteps,
-        payAblePrice,
-        cuponCode,
         clientToken, setClientToken,
-        lowTicketsQuantity,
-        fullTicketsQuantity,
-        corporateTicketsQuantity,
-        purcherAttendeesInfo,
-        setSuccessData,
+        // Quantity ________________________________________
+        lowTicketsQuantity, setLowTicketsQuantity,
+        fullTicketsQuantity, setFullTicketsQuantity,
+        corporateTicketsQuantity, setCorporateTicketsQuantity,
+        // Price ___________________________________________
+        setLowTicketsPrice,
+        setFullTicketsPrice,
+        setCorporateTicketsPrice,
+        setTotalParice,
+        payAblePrice, setPayAblePrice,
+        cuponCode, setCuponCode,
+        // Purcher and Attendees Info Collect ______________
+        purcherAttendeesInfo, setPurcherAttendeesInfo,
     } = useContext(TicketsDataContext);
     const navigate = useNavigate();
 
+    useEffect( () => {
+        if(lowTicketsQuantity+fullTicketsQuantity+corporateTicketsQuantity ==0)navigate('/')
+        if(!purcherAttendeesInfo)navigate('/')
+    }, [])
 
     const dropinInstance = useRef(null);
     const [loading, setLoading] = useState(false);
@@ -46,16 +57,19 @@ const PaymentComponent = () => {
         });
         }
     }, [clientToken]);
+    
 
     const handlePayment = async () => {
         setLoading(true);
         setMessage('');
+        const totalQuantity = lowTicketsQuantity+fullTicketsQuantity+corporateTicketsQuantity;
         if (!dropinInstance.current) return;
 
         const cleanedAttendees = purcherAttendeesInfo.attendees.slice(0, -1)
         const updatedAttendees = cleanedAttendees.map(att => ({
             ...att,
-            purcher: purcherAttendeesInfo.purcher
+            purcher: purcherAttendeesInfo.purcher,
+            taxDiscountCupon: useAttendeesSpecificTicketTaxDiscountCalculate({data: {price: att.price, group: totalQuantity, cuponCode: cuponCode}})
         }));
 
 
@@ -63,32 +77,44 @@ const PaymentComponent = () => {
         console.log('Final Purcher:', purcherAttendeesInfo.purcher);
 
         try {
-        const { nonce } = await dropinInstance.current.requestPaymentMethod({
-            threeDSecure: {
-                amount: payAblePrice // Dummy amount; real amount is calculated server-side
-            },
-        });
+            const { nonce } = await dropinInstance.current.requestPaymentMethod({
+                threeDSecure: {
+                    amount: payAblePrice // Dummy amount; real amount is calculated server-side
+                },
+            });
 
-        const response = await axios.post('http://localhost:5000/api/v1/icghc/checkout', {
-            nonce,
-            lowTicketsQuantity,
-            fullTicketsQuantity,
-            corporateTicketsQuantity,
-            cuponCode,
-        });
+            const purcherAttendeesData = {attendees: updatedAttendees, purcher: purcherAttendeesInfo.purcher}
+            const response = await axios.post('http://localhost:5000/api/v1/icghc/checkout', {
+                nonce,
+                lowTicketsQuantity,
+                fullTicketsQuantity,
+                corporateTicketsQuantity,
+                cuponCode,
+                purcherAttendeesData,
+            });
 
-        if (response.data.success) {
-            setSuccessData(response.data.summary)
-            const summary = response.data.summary;
-            console.log("Response", response)
-            setMessage(
-            `✅ Payment Success.\nPaid: ৳${summary.finalAmount}\nTransaction ID: ${response.data.transaction.id}`
-            );
-            setLoading(false)
-        } else {
-            setMessage(`❌ Payment failed: ${response.data.message}`);
-            setLoading(false)
-        }
+
+            if (response.data.success) {
+                const url = `/success/${response.data.purcherID}`
+                navigate(url)
+                setLoading(false)
+                // Quantity ________________________________________
+                setLowTicketsQuantity(0)
+                setFullTicketsQuantity(0)
+                setCorporateTicketsQuantity(0)
+                // Price ___________________________________________
+                setLowTicketsPrice(0)
+                setFullTicketsPrice(0)
+                setCorporateTicketsPrice(0)
+                setTotalParice(0)
+                setPayAblePrice(0)
+                setCuponCode('')
+                // Purcher and Attendees Info Collect ______________
+                setPurcherAttendeesInfo('')
+            } else {
+                setMessage(`❌ Payment failed: ${response.data.message}`);
+                setLoading(false)
+            }
         } catch (err) {
             setMessage('❌ Payment error occurred.');
             setLoading(false)
@@ -97,13 +123,6 @@ const PaymentComponent = () => {
         }
     };
 
-    const dataCheck = () => {
-        const data = {name: 'mehedi', phone: '111'}
-        axios.post(`http://localhost:5000/api/v1/icghc/check-mongodb`, data)
-        .then(res => {
-            console.log(res)
-        })
-    }
 
     return (
         <>

@@ -5,6 +5,7 @@ import './index.css'
 import TicketSaleLandingPage from './pages/TicketSaleLandingPage/TicketSaleLandingPage.jsx';
 import LoadingComponents from './Components/LoadingComponents.jsx';
 import TicketsComponents from './pages/TicketSaleLandingPage/TicketsComponts/TicketsComponents.jsx';
+import axios from 'axios';
 const AttendeesInfoComponent = React.lazy(() => import('./pages/TicketSaleLandingPage/TicketsComponts/AttendeesInfoComponent.jsx'));
 const PaymentComponent = React.lazy(() => import('./pages/TicketSaleLandingPage/TicketsComponts/PaymentComponent.jsx'));
 const TicketBuySuccessResultComponent = React.lazy(() => import('./pages/TicketSaleLandingPage/TicketsComponts/TicketBuySuccessResultComponent.jsx'));
@@ -28,7 +29,8 @@ let router = createBrowserRouter([
         element: <Suspense fallback={<LoadingComponents/>}><PaymentComponent/></Suspense>
       },
       {
-        path: '/success',
+        path: '/success/:id',
+        loader: ({ params }) => axios.get(`http://localhost:5000/api/v1/icghc/purcher/${params.id}`),
         element: <Suspense fallback={<LoadingComponents/>}><TicketBuySuccessResultComponent/></Suspense>
       },
     ]
