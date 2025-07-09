@@ -3,6 +3,7 @@ import Pagination from '../../../Components/Pagination';
 import { useParams, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import useQueryParams from '../../../hooks/useQueryParams';
+import LoadingComponents from '../../../Components/LoadingComponents';
 
 const Attendees = () => {
     // URL params
@@ -19,7 +20,9 @@ const Attendees = () => {
 
     // Fetch Attendees Data________________________________
     const [attendeesData, setAttendeesData] = useState();
+    const [loading, setLoading] = useState(false)
     useEffect(() => {
+        setLoading(true)
         axios.get(`http://localhost:5000/api/v1/icghc/attendees-data?page=${page}&search=${search}`)
         .then(res => {
             if(res.status === 200 ){
@@ -28,6 +31,7 @@ const Attendees = () => {
                 setTotalDataCount(res.data.totalCount)
             }
         })
+        setLoading(false)
     }, [search, page])
 
     // Handle Page Change________________________________
@@ -55,6 +59,9 @@ const Attendees = () => {
                 <p>Attendees Details {totalDataCount}</p>
                 <button className='cursor-pointer border px-3 py-1 rounded-md' onClick={handleDownloadExcel}>Export All Data</button>
             </div>
+            {
+                loading && <LoadingComponents/>
+            }
             {
                 attendeesData &&
                 attendeesData.map((att, index) => 

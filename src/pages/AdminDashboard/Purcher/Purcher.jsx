@@ -18,8 +18,10 @@ const Purcher = () => {
         const [totalDataCount, setTotalDataCount] = useState();
 
         // Fetch Attendees Data________________________________
+        const [loading, setLoading] = useState(false);
         const [purcherData, setPurcherData] = useState();
         useEffect(() => {
+            setLoading(true)
             axios.get(`http://localhost:5000/api/v1/icghc/purcher-data?page=${page}&search=${search}`)
             .then(res => {
                 if(res.status === 200 ){
@@ -28,6 +30,7 @@ const Purcher = () => {
                     setTotalDataCount(res.data.totalCount)
                 }
             })
+            setLoading(false)
         }, [search, page])
 
         // Handle Page Change________________________________
@@ -54,6 +57,9 @@ const Purcher = () => {
                 <p>Purcher Details {totalDataCount}</p>
                 <button className='cursor-pointer border px-3 py-1 rounded-md' onClick={handleDownloadExcel}>Export All Data</button>
             </div>
+            {
+                loading && <LoadingComponents/>
+            }
             {
                 purcherData &&
                 purcherData.map((purcher, index) => 
