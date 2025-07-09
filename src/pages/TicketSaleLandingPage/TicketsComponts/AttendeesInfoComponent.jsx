@@ -5,6 +5,7 @@ import 'react-phone-input-2/lib/style.css';
 import OrderSummaryComponents from '../OrderSummaryComponents/OrderSummaryComponents';
 import { TicketsDataContext } from '../TicketSaleLandingPage';
 import { useNavigate } from 'react-router-dom';
+import { useDropin } from '../../../utils/DropinContext';
 
 const inputClass = "w-full border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500";
 const labelClass = "block text-sm font-medium text-gray-700 mb-1";
@@ -160,10 +161,17 @@ const AttendeesInfoComponent = () => {
     const { register, handleSubmit, watch, setValue, trigger, formState: { errors } } = methods;
 
     const onSubmit = (data) => {
+        console.log(data)
         setSteps(3)
         setPurcherAttendeesInfo(data)
         navigate('/payments')
     };    
+
+
+    const {  initializeBraintree } = useDropin();
+    useEffect(() => {
+        initializeBraintree();
+    }, []);
 
     // const dataFromLoacalStorage = JSON.parse(localStorage.getItem('purcherAttendeesInfo'));
     // localStorage.setItem('purcherAttendeesInfo', JSON.stringify(data));
