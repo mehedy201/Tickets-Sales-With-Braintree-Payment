@@ -97,11 +97,11 @@ const PaymentComponent = () => {
       lowTicketsQuantity + fullTicketsQuantity + corporateTicketsQuantity;
     if (!dropinInstance.current) return;
 
-    // console.log('attendees before clean', purcherAttendeesInfo.attendees)
-    // const cleanedAttendees = purcherAttendeesInfo.attendees.slice(0, -1)
-    //         console.log('attendees after clean', cleanedAttendees)
+    console.log('attendees before clean', purcherAttendeesInfo.attendees)
+    const cleanedAttendees = purcherAttendeesInfo.attendees.slice(0, -1)
+            console.log('attendees after clean', cleanedAttendees)
 
-    const updatedAttendees = purcherAttendeesInfo.attendees.map((att) => ({
+    const updatedAttendees = cleanedAttendees.map((att) => ({
       ...att,
       purcher: purcherAttendeesInfo.purcher,
       taxDiscountCupon: useAttendeesSpecificTicketTaxDiscountCalculate({

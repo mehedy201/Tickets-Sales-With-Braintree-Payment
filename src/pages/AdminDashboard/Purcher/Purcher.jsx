@@ -3,6 +3,7 @@ import { useParams, useSearchParams } from "react-router-dom";
 import useQueryParams from "../../../hooks/useQueryParams";
 import axios from "axios";
 import Pagination from "../../../Components/Pagination";
+import LoadingComponents from "../../../Components/LoadingComponents";
 
 const Purcher = () => {
   // URL params
@@ -31,9 +32,10 @@ const Purcher = () => {
           setPurcherData(res.data.data);
           setTotalPage(res.data.totalPages);
           setTotalDataCount(res.data.totalCount);
+          setLoading(false);
         }
       });
-    setLoading(false);
+    // setLoading(false);
   }, [search, page]);
 
   // Handle Page Change________________________________

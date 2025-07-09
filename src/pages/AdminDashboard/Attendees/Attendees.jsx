@@ -32,9 +32,9 @@ const Attendees = () => {
           setAttendeesData(res.data.data);
           setTotalPage(res.data.totalPages);
           setTotalDataCount(res.data.totalCount);
+          setLoading(false);
         }
       });
-    setLoading(false);
   }, [search, page]);
 
   // Handle Page Change________________________________

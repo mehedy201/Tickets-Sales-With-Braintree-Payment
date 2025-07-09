@@ -103,9 +103,9 @@ let router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <React.StrictMode>
+  <React.StrictMode>
   <DropinProvider>
     <RouterProvider router={router} />
   </DropinProvider>
-  // </React.StrictMode>
+  </React.StrictMode>
 );
