@@ -101,7 +101,7 @@ const PaymentComponent = () => {
     const cleanedAttendees = purcherAttendeesInfo.attendees.slice(0, -1)
             console.log('attendees after clean', cleanedAttendees)
 
-    const updatedAttendees = cleanedAttendees.map((att) => ({
+    const updatedAttendees = purcherAttendeesInfo.attendees.map((att) => ({
       ...att,
       purcher: purcherAttendeesInfo.purcher,
       taxDiscountCupon: useAttendeesSpecificTicketTaxDiscountCalculate({

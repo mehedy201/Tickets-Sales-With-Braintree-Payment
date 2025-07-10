@@ -10,11 +10,8 @@ import Dashboard from "./pages/AdminDashboard/Dashboard.jsx";
 import LogIn from "./pages/LogIn/LogIn.jsx";
 import ProtectRoute from "./pages/ProtectRoute/ProtectRoute.jsx";
 import { DropinProvider } from "./utils/DropinContext.jsx";
-const AttendeesInfoComponent = React.lazy(() =>
-  import(
-    "./pages/TicketSaleLandingPage/TicketsComponts/AttendeesInfoComponent.jsx"
-  )
-);
+import AttendeesInfoComponent from "./pages/TicketSaleLandingPage/TicketsComponts/AttendeesInfoComponent.jsx";
+
 const PaymentComponent = React.lazy(() =>
   import("./pages/TicketSaleLandingPage/TicketsComponts/PaymentComponent.jsx")
 );
@@ -42,11 +39,7 @@ let router = createBrowserRouter([
       },
       {
         path: "/attendees-info",
-        element: (
-          <Suspense fallback={<LoadingComponents />}>
-            <AttendeesInfoComponent />
-          </Suspense>
-        ),
+        element: <AttendeesInfoComponent />
       },
       {
         path: "/payments",
@@ -103,9 +96,9 @@ let router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  // <React.StrictMode>
   <DropinProvider>
     <RouterProvider router={router} />
   </DropinProvider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
