@@ -23,6 +23,7 @@ const TicketsComponents = () => {
     
     useEffect(() => {
         if(cuponCode)setCuponCode('')
+        setSteps(1)
     },[])
 
     return (
