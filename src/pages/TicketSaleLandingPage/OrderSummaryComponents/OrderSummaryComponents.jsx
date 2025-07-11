@@ -165,9 +165,6 @@ const OrderSummaryComponents = () => {
                         </div>
 
                     </div>
-
-
-                    <p className='pt-3'><span className='font-bold'>*No cancellation policy:</span> Order cancellation not allowed.</p>
                 </div>
             }
         </>

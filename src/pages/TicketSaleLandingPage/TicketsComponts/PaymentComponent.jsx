@@ -35,11 +35,7 @@ const PaymentComponent = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (
-      lowTicketsQuantity + fullTicketsQuantity + corporateTicketsQuantity ==
-      0
-    )
-      navigate("/");
+    if (lowTicketsQuantity + fullTicketsQuantity + corporateTicketsQuantity ==0)navigate("/");
     if (!purcherAttendeesInfo) {
       navigate("/");
       setSteps(1);
@@ -90,6 +86,7 @@ const PaymentComponent = () => {
   //     }
   // }, [clientToken]);
 
+  const [termsCondition, setTermsCondition] = useState(false)
   const handlePayment = async () => {
     setLoading(true);
     setMessage("");
@@ -182,9 +179,14 @@ const PaymentComponent = () => {
                 id="dropin-container"
                 className="mb-4 border-none shadow"
               ></div>
+              <div className="flex items-start gap-3">
+                <input className="scale-120 mt-[6px]" onChange={e => setTermsCondition(e.target.checked)} type="checkbox" name="" id="" />
+                <p>By registering, I agree to the terms and conditions. <a className="text-blue-700" target="_blank" href="https://thriveglobalforum.com/terms-and-conditions/">Terms & conditions</a></p>
+              </div>
               {message && (
                 <p className="mt-4 text-sm text-gray-700">{message}</p>
               )}
+              
             </div>
           </div>
         </div>
@@ -199,13 +201,16 @@ const PaymentComponent = () => {
         >
           Previous
         </span>
-        <span
-          onClick={handlePayment}
-          disabled={loading || !dropinInstance.current}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
-          {loading ? "Processing..." : `Pay`}
-        </span>
+        {
+          termsCondition === true ? 
+          <span
+            onClick={handlePayment}
+            disabled={loading || !dropinInstance.current || !termsCondition}
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          >
+            {loading ? "Processing..." : `Submit`}
+          </span> : <span className="bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-700">Submit</span>
+        }
       </div>
     </>
   );

@@ -32,3 +32,7 @@ body {
   color: #007bff;
   border-bottom: 2px solid #007bff;
 }
+
+.braintree-form__notice-of-collection{
+  display: none !important;
+}
