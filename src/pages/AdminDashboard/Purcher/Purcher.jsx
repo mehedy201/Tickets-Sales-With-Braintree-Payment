@@ -25,7 +25,7 @@ const Purcher = () => {
     setLoading(true);
     axios
       .get(
-        `https://tickets-sales-with-braintree-payment-backend-production.up.railway.app/api/v1/icghc/purcher-data?page=${page}&search=${search}`
+        `http://localhost:5000/api/v1/ThriveGlobalForum/purcher-data?page=${page}&search=${search}`
       )
       .then((res) => {
         if (res.status === 200) {
@@ -53,7 +53,7 @@ const Purcher = () => {
 
   const handleDownloadExcel = () => {
     window.open(
-      "https://tickets-sales-with-braintree-payment-backend-production.up.railway.app/api/v1/icghc/download-Full-Purcher-Excel",
+      "http://localhost:5000/api/v1/ThriveGlobalForum/download-Full-Purcher-Excel",
       "_blank"
     );
   };
@@ -91,7 +91,7 @@ const Purcher = () => {
             </div>
             <a
               style={{ textDecoration: "none" }}
-              href={`https://tickets-sales-with-braintree-payment-backend-production.up.railway.app/api/v1/icghc/download-single-purcher-details/${purcher._id}`}
+              href={`http://localhost:5000/api/v1/ThriveGlobalForum/download-single-purcher-details/${purcher._id}`}
             >
               Download Purcher Details
             </a>

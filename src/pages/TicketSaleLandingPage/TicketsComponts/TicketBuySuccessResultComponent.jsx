@@ -110,7 +110,7 @@ const TicketBuySuccessResultComponent = () => {
               </div>
               <a
                 style={{ textDecoration: "none" }}
-                href={`https://tickets-sales-with-braintree-payment-backend-production.up.railway.app/api/v1/icghc/download-attendees-tickets/${att._id}`}
+                href={`http://localhost:5000/api/v1/ThriveGlobalForum/download-attendees-tickets/${att._id}`}
               >
                 Download Ticket
               </a>

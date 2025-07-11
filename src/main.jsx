@@ -32,19 +32,19 @@ let router = createBrowserRouter([
       },
       {
         path: "/attendees-info",
-        element: <AttendeesInfoComponent />
+        element: <AttendeesInfoComponent />,
       },
       {
         path: "/payments",
-        element: <PaymentComponent />
+        element: <PaymentComponent />,
       },
       {
         path: "/success/:id",
         loader: ({ params }) =>
           axios.get(
-            `https://tickets-sales-with-braintree-payment-backend-production.up.railway.app/api/v1/icghc/purcher/${params.id}`
+            `http://localhost:5000/api/v1/ThriveGlobalForum/purcher/${params.id}`
           ),
-        element: <TicketBuySuccessResultComponent />
+        element: <TicketBuySuccessResultComponent />,
       },
     ],
   },

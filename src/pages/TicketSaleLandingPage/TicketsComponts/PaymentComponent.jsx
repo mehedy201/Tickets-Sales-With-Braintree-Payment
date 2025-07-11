@@ -70,7 +70,7 @@ const PaymentComponent = () => {
   // useEffect(() => {
   //     if(!clientToken){
   //         const getClientToken = async () => {
-  //         const res = await axios.get('https://tickets-sales-with-braintree-payment-backend-production.up.railway.app/api/v1/icghc/client-token');
+  //         const res = await axios.get('http://localhost:5000/api/v1/ThriveGlobalForum/client-token');
   //         setClientToken(res.data.clientToken);
   //         };
   //         getClientToken();
@@ -97,9 +97,9 @@ const PaymentComponent = () => {
       lowTicketsQuantity + fullTicketsQuantity + corporateTicketsQuantity;
     if (!dropinInstance.current) return;
 
-    console.log('attendees before clean', purcherAttendeesInfo.attendees)
-    const cleanedAttendees = purcherAttendeesInfo.attendees.slice(0, -1)
-            console.log('attendees after clean', cleanedAttendees)
+    console.log("attendees before clean", purcherAttendeesInfo.attendees);
+    const cleanedAttendees = purcherAttendeesInfo.attendees.slice(0, -1);
+    console.log("attendees after clean", cleanedAttendees);
 
     const updatedAttendees = purcherAttendeesInfo.attendees.map((att) => ({
       ...att,
@@ -124,7 +124,7 @@ const PaymentComponent = () => {
         purcher: purcherAttendeesInfo.purcher,
       };
       const response = await axios.post(
-        "https://tickets-sales-with-braintree-payment-backend-production.up.railway.app/api/v1/icghc/checkout",
+        "http://localhost:5000/api/v1/ThriveGlobalForum/checkout",
         {
           nonce,
           lowTicketsQuantity,

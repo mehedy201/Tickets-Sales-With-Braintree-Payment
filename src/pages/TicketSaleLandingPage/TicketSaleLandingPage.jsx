@@ -66,7 +66,7 @@ const TicketSaleLandingPage = () => {
   // useEffect(() => {
   //     const fetchTokenAndInit = async () => {
   //         try {
-  //         const { data } = await axios.get('https://tickets-sales-with-braintree-payment-backend-production.up.railway.app/api/v1/icghc/client-token');
+  //         const { data } = await axios.get('http://localhost:5000/api/v1/ThriveGlobalForum/client-token');
   //         setClientToken(data.clientToken);
   //         } catch (err) {
   //         console.error('Failed to fetch token', err);
@@ -87,8 +87,15 @@ const TicketSaleLandingPage = () => {
       <div className="bg-blue-500 pt-20 pb-20">
         <div className={tailwindContainerClasses}>
           <div>
-            <img style={{height: '100px', width: 'auto'}} src="" alt="Mehedi" />
-            <h1 className="text-[30px] md:text-[40px] font-bold text-white">Global Leadership Forum on Technology, Health, and Climate Resilience</h1>
+            <img
+              style={{ height: "100px", width: "auto" }}
+              src=""
+              alt="Mehedi"
+            />
+            <h1 className="text-[30px] md:text-[40px] font-bold text-white">
+              Global Leadership Forum on Technology, Health, and Climate
+              Resilience
+            </h1>
           </div>
           <div className="flex items-center gap-6 pt-3">
             <div className="flex items-center gap-1">
@@ -97,7 +104,9 @@ const TicketSaleLandingPage = () => {
             </div>
             <div className="flex items-center gap-1">
               <LiaMapMarkerAltSolid size={18} color="white" />
-              <p className="text-white text-sm">Fredericton Convention Centre, New Brunswick, Canada</p>
+              <p className="text-white text-sm">
+                Fredericton Convention Centre, New Brunswick, Canada
+              </p>
             </div>
           </div>
         </div>

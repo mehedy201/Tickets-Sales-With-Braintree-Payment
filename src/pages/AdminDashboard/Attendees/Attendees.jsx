@@ -25,7 +25,7 @@ const Attendees = () => {
     setLoading(true);
     axios
       .get(
-        `https://tickets-sales-with-braintree-payment-backend-production.up.railway.app/api/v1/icghc/attendees-data?page=${page}&search=${search}`
+        `http://localhost:5000/api/v1/ThriveGlobalForum/attendees-data?page=${page}&search=${search}`
       )
       .then((res) => {
         if (res.status === 200) {
@@ -52,7 +52,7 @@ const Attendees = () => {
 
   const handleDownloadExcel = () => {
     window.open(
-      "https://tickets-sales-with-braintree-payment-backend-production.up.railway.app/api/v1/icghc/download-Full-Attendees-Excel",
+      "http://localhost:5000/api/v1/ThriveGlobalForum/download-Full-Attendees-Excel",
       "_blank"
     );
   };
@@ -91,7 +91,7 @@ const Attendees = () => {
             </div>
             <a
               style={{ textDecoration: "none" }}
-              href={`https://tickets-sales-with-braintree-payment-backend-production.up.railway.app/api/v1/icghc/download-attendees-tickets/${att._id}`}
+              href={`http://localhost:5000/api/v1/ThriveGlobalForum/download-attendees-tickets/${att._id}`}
             >
               Download Ticket
             </a>
