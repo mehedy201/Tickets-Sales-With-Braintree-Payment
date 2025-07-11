@@ -33,6 +33,7 @@ const Attendees = () => {
           setTotalPage(res.data.totalPages);
           setTotalDataCount(res.data.totalCount);
           setLoading(false);
+          console.log(res.data.data)
         }
       });
   }, [search, page]);

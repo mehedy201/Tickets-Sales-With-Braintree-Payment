@@ -74,7 +74,7 @@ const TicketBuySuccessResultComponent = () => {
           </div>
           <div className="flex flex-col gap-3 pt-3">
             <div className="flex items-center justify-between">
-              <p className="">HSB Tax (15%)</p>
+              <p className="">Harmonized Sales Tax (HST) (15%)</p>
               <p className="">$ {data?.data?.taxAmount}</p>
             </div>
             <div className="flex items-center justify-between">
