@@ -18,7 +18,7 @@ export const DropinProvider = ({ children }) => {
 
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/v1/ThriveGlobalForum/client-token"
+        "https://tickets-sales-with-braintree-payment-backend-production.up.railway.app/api/v1/ThriveGlobalForum/client-token"
       );
       const token = res.data.clientToken;
       setClientToken(token);

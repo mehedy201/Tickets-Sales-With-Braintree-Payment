@@ -8,7 +8,7 @@ import {
 } from "react-icons/io";
 import { createContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import axios from "axios";
+import logo from "../../assets/sitelogo.jpg";
 import { useDropin } from "../../utils/DropinContext";
 
 export const TicketsDataContext = createContext();
@@ -66,7 +66,7 @@ const TicketSaleLandingPage = () => {
   // useEffect(() => {
   //     const fetchTokenAndInit = async () => {
   //         try {
-  //         const { data } = await axios.get('http://localhost:5000/api/v1/ThriveGlobalForum/client-token');
+  //         const { data } = await axios.get('https://tickets-sales-with-braintree-payment-backend-production.up.railway.app/api/v1/ThriveGlobalForum/client-token');
   //         setClientToken(data.clientToken);
   //         } catch (err) {
   //         console.error('Failed to fetch token', err);
@@ -86,10 +86,11 @@ const TicketSaleLandingPage = () => {
       {/* ________________________________________________________________________ */}
       <div className="bg-blue-500 pt-20 pb-20">
         <div className={tailwindContainerClasses}>
-          <div>
+          <div className="flex gap-4 items-center">
             <img
+              className="rounded-lg"
               style={{ height: "100px", width: "auto" }}
-              src=""
+              src={logo}
               alt="Mehedi"
             />
             <h1 className="text-[30px] md:text-[40px] font-bold text-white">

@@ -35,7 +35,11 @@ const PaymentComponent = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (lowTicketsQuantity + fullTicketsQuantity + corporateTicketsQuantity ==0)navigate("/");
+    if (
+      lowTicketsQuantity + fullTicketsQuantity + corporateTicketsQuantity ==
+      0
+    )
+      navigate("/");
     if (!purcherAttendeesInfo) {
       navigate("/");
       setSteps(1);
@@ -66,7 +70,7 @@ const PaymentComponent = () => {
   // useEffect(() => {
   //     if(!clientToken){
   //         const getClientToken = async () => {
-  //         const res = await axios.get('http://localhost:5000/api/v1/ThriveGlobalForum/client-token');
+  //         const res = await axios.get('https://tickets-sales-with-braintree-payment-backend-production.up.railway.app/api/v1/ThriveGlobalForum/client-token');
   //         setClientToken(res.data.clientToken);
   //         };
   //         getClientToken();
@@ -86,7 +90,7 @@ const PaymentComponent = () => {
   //     }
   // }, [clientToken]);
 
-  const [termsCondition, setTermsCondition] = useState(false)
+  const [termsCondition, setTermsCondition] = useState(false);
   const handlePayment = async () => {
     setLoading(true);
     setMessage("");
@@ -121,7 +125,7 @@ const PaymentComponent = () => {
         purcher: purcherAttendeesInfo.purcher,
       };
       const response = await axios.post(
-        "http://localhost:5000/api/v1/ThriveGlobalForum/checkout",
+        "https://tickets-sales-with-braintree-payment-backend-production.up.railway.app/api/v1/ThriveGlobalForum/checkout",
         {
           nonce,
           lowTicketsQuantity,
@@ -180,13 +184,27 @@ const PaymentComponent = () => {
                 className="mb-4 border-none shadow"
               ></div>
               <div className="flex items-start gap-3">
-                <input className="scale-120 mt-[6px]" onChange={e => setTermsCondition(e.target.checked)} type="checkbox" name="" id="" />
-                <p>By registering, I agree to the terms and conditions. <a className="text-blue-700" target="_blank" href="https://thriveglobalforum.com/terms-and-conditions/">Terms & conditions</a></p>
+                <input
+                  className="scale-120 mt-[6px]"
+                  onChange={(e) => setTermsCondition(e.target.checked)}
+                  type="checkbox"
+                  name=""
+                  id=""
+                />
+                <p>
+                  By registering, I agree to the terms and conditions.{" "}
+                  <a
+                    className="text-blue-700"
+                    target="_blank"
+                    href="https://thriveglobalforum.com/terms-and-conditions/"
+                  >
+                    Terms & conditions
+                  </a>
+                </p>
               </div>
               {message && (
                 <p className="mt-4 text-sm text-gray-700">{message}</p>
               )}
-              
             </div>
           </div>
         </div>
@@ -201,16 +219,25 @@ const PaymentComponent = () => {
         >
           Previous
         </span>
-        {
-          termsCondition === true ? 
+        {termsCondition === true ? (
           <span
             onClick={handlePayment}
             disabled={loading || !dropinInstance.current || !termsCondition}
             className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
           >
-            {loading ? "Processing..." : `Submit`}
-          </span> : <span className="bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-700">Submit</span>
-        }
+            {loading ? (
+              <>
+                <span className="loader"></span> Processing...
+              </>
+            ) : (
+              `Submit`
+            )}
+          </span>
+        ) : (
+          <span className="bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Submit
+          </span>
+        )}
       </div>
     </>
   );
