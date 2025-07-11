@@ -11,15 +11,8 @@ import LogIn from "./pages/LogIn/LogIn.jsx";
 import ProtectRoute from "./pages/ProtectRoute/ProtectRoute.jsx";
 import { DropinProvider } from "./utils/DropinContext.jsx";
 import AttendeesInfoComponent from "./pages/TicketSaleLandingPage/TicketsComponts/AttendeesInfoComponent.jsx";
-
-const PaymentComponent = React.lazy(() =>
-  import("./pages/TicketSaleLandingPage/TicketsComponts/PaymentComponent.jsx")
-);
-const TicketBuySuccessResultComponent = React.lazy(() =>
-  import(
-    "./pages/TicketSaleLandingPage/TicketsComponts/TicketBuySuccessResultComponent.jsx"
-  )
-);
+import PaymentComponent from "./pages/TicketSaleLandingPage/TicketsComponts/PaymentComponent.jsx";
+import TicketBuySuccessResultComponent from "./pages/TicketSaleLandingPage/TicketsComponts/TicketBuySuccessResultComponent.jsx";
 // Admin Route Component _____
 const Attendees = React.lazy(() =>
   import("./pages/AdminDashboard/Attendees/Attendees.jsx")
@@ -43,11 +36,7 @@ let router = createBrowserRouter([
       },
       {
         path: "/payments",
-        element: (
-          <Suspense fallback={<LoadingComponents />}>
-            <PaymentComponent />
-          </Suspense>
-        ),
+        element: <PaymentComponent />
       },
       {
         path: "/success/:id",
@@ -55,11 +44,7 @@ let router = createBrowserRouter([
           axios.get(
             `https://tickets-sales-with-braintree-payment-backend-production.up.railway.app/api/v1/icghc/purcher/${params.id}`
           ),
-        element: (
-          <Suspense fallback={<LoadingComponents />}>
-            <TicketBuySuccessResultComponent />
-          </Suspense>
-        ),
+        element: <TicketBuySuccessResultComponent />
       },
     ],
   },

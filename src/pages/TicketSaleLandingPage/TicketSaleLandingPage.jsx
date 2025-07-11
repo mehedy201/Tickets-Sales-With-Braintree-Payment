@@ -86,17 +86,18 @@ const TicketSaleLandingPage = () => {
       {/* ________________________________________________________________________ */}
       <div className="bg-blue-500 pt-20 pb-20">
         <div className={tailwindContainerClasses}>
-          <h1 className="text-[30px] md:text-[40px] font-bold text-white">
-            International Conference on Global Health and Climate
-          </h1>
+          <div>
+            <img style={{height: '100px', width: 'auto'}} src="" alt="Mehedi" />
+            <h1 className="text-[30px] md:text-[40px] font-bold text-white">Global Leadership Forum on Technology, Health, and Climate Resilience</h1>
+          </div>
           <div className="flex items-center gap-6 pt-3">
             <div className="flex items-center gap-1">
               <CiCalendarDate size={18} color="white" />
-              <p className="text-white text-sm">Oct 19 to 22, 2025</p>
+              <p className="text-white text-sm">May 25–28, 2026</p>
             </div>
             <div className="flex items-center gap-1">
               <LiaMapMarkerAltSolid size={18} color="white" />
-              <p className="text-white text-sm">Québec, Quebec - Canada</p>
+              <p className="text-white text-sm">Fredericton Convention Centre, New Brunswick, Canada</p>
             </div>
           </div>
         </div>
