@@ -94,6 +94,11 @@ const PaymentComponent = () => {
   const handlePayment = async () => {
     setLoading(true);
     setMessage("");
+    if(termsCondition === false){
+      setMessage('Terms and condition Required');
+      setLoading(false)
+      return;
+    }
     const totalQuantity =
       lowTicketsQuantity + fullTicketsQuantity + corporateTicketsQuantity;
     if (!dropinInstance.current) return;
@@ -186,7 +191,12 @@ const PaymentComponent = () => {
               <div className="flex items-start gap-3">
                 <input
                   className="scale-120 mt-[6px]"
-                  onChange={(e) => setTermsCondition(e.target.checked)}
+                  onChange={(e) => {
+                    setTermsCondition(e.target.checked)
+                    if(e.target.checked === true) {
+                      setMessage('')
+                    }
+                  }}
                   type="checkbox"
                   name=""
                   id=""
@@ -203,7 +213,7 @@ const PaymentComponent = () => {
                 </p>
               </div>
               {message && (
-                <p className="mt-4 text-sm text-gray-700">{message}</p>
+                <p className="mt-4 text-sm text-red-700">{message}</p>
               )}
             </div>
           </div>
@@ -219,7 +229,6 @@ const PaymentComponent = () => {
         >
           Previous
         </span>
-        {termsCondition === true ? (
           <span
             onClick={handlePayment}
             disabled={loading || !dropinInstance.current || !termsCondition}
@@ -228,14 +237,9 @@ const PaymentComponent = () => {
             {loading ? (
               `Processing...`
             ) : (
-              `Submit`
+              `Register`
             )}
           </span>
-        ) : (
-          <span className="bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-700">
-            Submit
-          </span>
-        )}
       </div>
     </>
   );
