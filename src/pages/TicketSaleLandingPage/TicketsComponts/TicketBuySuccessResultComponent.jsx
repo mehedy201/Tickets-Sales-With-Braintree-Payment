@@ -135,7 +135,7 @@ const TicketBuySuccessResultComponent = () => {
           <div className="flex items-center gap-3 justify-center py-8">
             <a
               className="bg-green-500 px-4 py-2 rounded-md text-white font-bold cursor-pointer hover:text-white"
-              href="https://icghc.org/"
+              href="https://thriveglobalforum.com"
               target="_blank"
             >
               Back to Site
