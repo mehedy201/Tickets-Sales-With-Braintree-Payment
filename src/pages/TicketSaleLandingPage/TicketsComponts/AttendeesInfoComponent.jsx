@@ -11,7 +11,7 @@ import { getNames } from 'country-list';
 
 const TicketAttendeeBlock = ({ type, attendeeIndex }) => {
   const { register, watch, setValue, formState: { errors } } = useFormContext();
-  const visaWatch = watch(`attendees.${attendeeIndex}.requireVisa`) || 'NO';
+  const visaWatch = watch(`attendees.${attendeeIndex}.requireVisa`);
   const countryNames = getNames();
 
   return (
@@ -58,7 +58,7 @@ const TicketAttendeeBlock = ({ type, attendeeIndex }) => {
       <div className="mt-3">
         <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
         <PhoneInput
-          country={"us"}
+          // country={"us"}
           value={watch(`attendees.${attendeeIndex}.phone`)}
           onChange={(value) => setValue(`attendees.${attendeeIndex}.phone`, value)}
         />
@@ -75,7 +75,7 @@ const TicketAttendeeBlock = ({ type, attendeeIndex }) => {
             <input
               type="radio"
               value="NO"
-              defaultChecked
+              // defaultChecked
               {...register(`attendees.${attendeeIndex}.requireVisa`, { required: "Required" })}
               className="form-radio text-indigo-600"
             />
@@ -199,7 +199,7 @@ const AttendeesInfoComponent = () => {
             phone: "",
             organizationName: "",
             restrictions: "",
-            requireVisa: "NO",
+            requireVisa: "",
             passportNumber: "",
             passportExpiry: "",
             countryOfPassport: "",
@@ -248,7 +248,7 @@ const AttendeesInfoComponent = () => {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
                     <PhoneInput
-                      country={"us"}
+                      // country={"us"}
                       value={watch("purcher.phone")}
                       onChange={(value) => setValue("purcher.phone", value)}
                     />
