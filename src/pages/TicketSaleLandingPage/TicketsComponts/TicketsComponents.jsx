@@ -37,7 +37,7 @@ const TicketsComponents = () => {
                         <div>
                             <h2 className='text-[18px] md:text-[22px] font-bold pb-1'>Low and Middle Income Countries <span className="bg-pink-300 text-xs font-light px-2 py-1 rounded">Venue and Online</span></h2>
                             <h5 className='text-[14px] md:text-[16px] font-semibold pb-2'>Attendees from Low and Middle-Income Countries As designated by the World Bank / Participants des pays à revenu faible et intermédiaire, tel que désigné par la Banque mondiale</h5>
-                            <p className='text-gray-500'>Sales end on <span className='font-bold text-black'>Oct 22, 2025</span></p>
+                            <p className='text-gray-500'>Sales end on <span className='font-bold text-black'>May 28, 2026</span></p>
                         </div>
                         <div>
                             <h2 className='font-bold pb-1'>US $440.00</h2>
@@ -70,7 +70,7 @@ const TicketsComponents = () => {
                         <div>
                             <h2 className='text-[18px] md:text-[22px] font-bold pb-1 '>Full Conference Registration <span className="bg-pink-300 text-xs font-light px-2 py-1 rounded">Venue and Online</span></h2>
                             <h5 className='text-[14px] md:text-[16px] font-semibold pb-2'>Full Conference Registration/Inscription Complète </h5>
-                            <p className='text-gray-500'>Sales end on <span className='font-bold text-black'>Oct 22, 2025</span></p>
+                            <p className='text-gray-500'>Sales end on <span className='font-bold text-black'>May 28, 2026</span></p>
                         </div>
                         <div>
                             <h2 className='font-bold pb-1'>US $500.00</h2>
@@ -103,7 +103,7 @@ const TicketsComponents = () => {
                         <div>
                             <h2 className='text-[18px] md:text-[22px] font-bold pb-1'>Corporate Attendees <span className="bg-pink-300 text-xs font-light px-2 py-1 rounded">Venue and Online</span></h2>
                             <h5 className='text-[14px] md:text-[16px] font-semibold pb-2'>Representatives from Corporations, Organizations, and Businesses /Représentants d'entreprises, d'organisations et de sociétés</h5>
-                            <p className='text-gray-500'>Sales end on <span className='font-bold text-black'>Oct 22, 2025</span></p>
+                            <p className='text-gray-500'>Sales end on <span className='font-bold text-black'>May 28, 2026</span></p>
                         </div>
                         <div>
                             <h2 className='font-bold pb-1'>US $550.00</h2>
