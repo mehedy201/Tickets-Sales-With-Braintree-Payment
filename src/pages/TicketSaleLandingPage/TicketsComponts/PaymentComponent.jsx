@@ -2,7 +2,6 @@ import { useContext, useEffect, useRef, useState } from "react";
 import OrderSummaryComponents from "../OrderSummaryComponents/OrderSummaryComponents";
 import { useNavigate } from "react-router-dom";
 import { TicketsDataContext } from "../TicketSaleLandingPage";
-import dropin from "braintree-web-drop-in";
 import axios from "axios";
 import useAttendeesSpecificTicketTaxDiscountCalculate from "../../../hooks/useAttendeesSpecificTicketTaxDiscountCalculate";
 import { useDropin } from "../../../utils/DropinContext";
@@ -10,8 +9,6 @@ import { useDropin } from "../../../utils/DropinContext";
 const PaymentComponent = () => {
   const {
     setSteps,
-    clientToken,
-    setClientToken,
     // Quantity ________________________________________
     lowTicketsQuantity,
     setLowTicketsQuantity,
@@ -102,10 +99,6 @@ const PaymentComponent = () => {
     const totalQuantity =
       lowTicketsQuantity + fullTicketsQuantity + corporateTicketsQuantity;
     if (!dropinInstance.current) return;
-
-    console.log("attendees before clean", purcherAttendeesInfo.attendees);
-    const cleanedAttendees = purcherAttendeesInfo.attendees.slice(0, -1);
-    console.log("attendees after clean", cleanedAttendees);
 
     const updatedAttendees = purcherAttendeesInfo.attendees.map((att) => ({
       ...att,
