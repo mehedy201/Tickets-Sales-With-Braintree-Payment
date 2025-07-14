@@ -117,16 +117,16 @@ const TicketBuySuccessResultComponent = () => {
                     <p>{att?.ticketsType}</p>
                   </div>
                   <a
-                    style={{ textDecoration: "none" }}
+                    style={{ textDecoration: "none", fontWeight: 'bold' }}
                     href={`https://tickets-sales-with-braintree-payment-backend-production.up.railway.app/api/v1/ThriveGlobalForum/download-attendees-tickets/${att._id}`}
                   >
-                    Download Ticket
+                    Download Invoice
                   </a>
                 </div>
               ))}
           </div>
           <div className="py-4">
-            <p>
+            <p className="text-green-600">
               Thank you! Your registration was received. Your payment invoice
               has been emailed to you. If you require a visa letter of
               invitation, it will be emailed to you within three business days
