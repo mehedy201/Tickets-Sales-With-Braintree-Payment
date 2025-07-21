@@ -92,6 +92,10 @@ export const DropinProvider = ({ children }) => {
         authorization: clientToken,
         container: selector,
         threeDSecure: true,
+        paypal: {
+          flow: 'checkout', // required
+          currency: 'USD',
+        },
       });
 
       dropinInstanceRef.current = instance;
