@@ -117,7 +117,7 @@ const TicketBuySuccessResultComponent = () => {
                     <p>{att?.ticketsType}</p>
                   </div>
                   <a
-                    style={{ textDecoration: "none", fontWeight: 'bold' }}
+                    style={{ textDecoration: "none", fontWeight: "bold" }}
                     href={`https://tickets-sales-with-braintree-payment-backend-production.up.railway.app/api/v1/ThriveGlobalForum/download-attendees-tickets/${att._id}`}
                   >
                     Download Invoice

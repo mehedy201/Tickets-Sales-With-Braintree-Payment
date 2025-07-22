@@ -58,7 +58,7 @@ export const DropinProvider = ({ children }) => {
   };
 
   // Attach Drop-in to payment container
-  const mountToContainer = async (selector = "#dropin-container") => {
+  const mountToContainer = async (selector = "#dropin-container", amount) => {
     console.log("📦 Trying to mount drop-in to:", selector);
 
     const container = document.querySelector(selector);
@@ -92,10 +92,6 @@ export const DropinProvider = ({ children }) => {
         authorization: clientToken,
         container: selector,
         threeDSecure: true,
-        paypal: {
-          flow: 'checkout', // required
-          currency: 'USD',
-        },
       });
 
       dropinInstanceRef.current = instance;

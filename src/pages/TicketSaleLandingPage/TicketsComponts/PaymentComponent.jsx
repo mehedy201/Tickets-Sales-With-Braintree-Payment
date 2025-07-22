@@ -91,9 +91,9 @@ const PaymentComponent = () => {
   const handlePayment = async () => {
     setLoading(true);
     setMessage("");
-    if(termsCondition === false){
-      setMessage('Terms and condition Required');
-      setLoading(false)
+    if (termsCondition === false) {
+      setMessage("Terms and condition Required");
+      setLoading(false);
       return;
     }
     const totalQuantity =
@@ -185,9 +185,9 @@ const PaymentComponent = () => {
                 <input
                   className="scale-120 mt-[6px]"
                   onChange={(e) => {
-                    setTermsCondition(e.target.checked)
-                    if(e.target.checked === true) {
-                      setMessage('')
+                    setTermsCondition(e.target.checked);
+                    if (e.target.checked === true) {
+                      setMessage("");
                     }
                   }}
                   type="checkbox"
@@ -222,17 +222,13 @@ const PaymentComponent = () => {
         >
           Previous
         </span>
-          <span
-            onClick={handlePayment}
-            disabled={loading || !dropinInstance.current || !termsCondition}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-          >
-            {loading ? (
-              `Processing...`
-            ) : (
-              `Register`
-            )}
-          </span>
+        <span
+          onClick={handlePayment}
+          disabled={loading || !dropinInstance.current || !termsCondition}
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        >
+          {loading ? `Processing...` : `Register`}
+        </span>
       </div>
     </>
   );
