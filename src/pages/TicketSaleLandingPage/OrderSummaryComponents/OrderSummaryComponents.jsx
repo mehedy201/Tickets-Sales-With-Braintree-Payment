@@ -51,9 +51,9 @@ const OrderSummaryComponents = () => {
         setIsCuponCodeTrue(false)
         if(payAblePrice > 0){
             if(cuponCode){
-                if(cuponCode === 'Mehedi'){
-                    setCuponDiscountAmount(300)
-                    const afterCupon = payAblePrice - 300
+                if(cuponCode === 'Malik03'){
+                    setCuponDiscountAmount(505)
+                    const afterCupon = payAblePrice - 505
                     setPayAblePrice(afterCupon)
                     setIsCuponCodeTrue(true)
                 }else{
