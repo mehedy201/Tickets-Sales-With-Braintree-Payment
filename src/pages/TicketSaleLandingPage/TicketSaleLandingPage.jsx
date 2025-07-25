@@ -8,7 +8,7 @@ import {
 } from "react-icons/io";
 import { createContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import logo from "../../assets/sitelogo.jpg";
+import logo from "../../assets/logo.jpg";
 import { useDropin } from "../../utils/DropinContext";
 
 export const TicketsDataContext = createContext();
@@ -94,18 +94,17 @@ const TicketSaleLandingPage = () => {
               alt="Mehedi"
             />
             <h1 className="text-[30px] md:text-[40px] font-bold text-white">
-              Global Leadership Forum on Technology, Health, and Climate
-              Resilience
+              International Conference on Entrepreneurship, Health and Climate
             </h1>
           </div>
           <div className="flex items-center gap-6 pt-3">
             <div className="flex items-center gap-1">
               <CiCalendarDate size={18} color="white" />
-              <p className="text-white text-sm">May 25–28, 2026</p>
+              <p className="text-white text-sm">8-10 June, 2026</p>
             </div>
             <div className="flex items-center gap-1">
               <LiaMapMarkerAltSolid size={18} color="white" />
-              <p className="text-white text-sm">
+              <p className="text-white text-sm font-bold">
                 Fredericton Convention Centre, New Brunswick, Canada
               </p>
             </div>
