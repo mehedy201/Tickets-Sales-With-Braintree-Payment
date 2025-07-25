@@ -43,6 +43,9 @@ export const DropinProvider = ({ children }) => {
           authorization: token,
           container: hiddenDiv,
           threeDSecure: true,
+          translations: {
+            payWithCard: 'Debit/Credit Card'
+          }
         });
         dropinInstanceRef.current = instance;
         setIsReady(true);
@@ -92,6 +95,9 @@ export const DropinProvider = ({ children }) => {
         authorization: clientToken,
         container: selector,
         threeDSecure: true,
+        translations: {
+          payWithCard: 'Debit/Credit Card'
+        }
       });
 
       dropinInstanceRef.current = instance;
