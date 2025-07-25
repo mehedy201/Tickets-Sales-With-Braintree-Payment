@@ -2,11 +2,10 @@ import { CiCalendarDate } from 'react-icons/ci';
 import { LiaMapMarkerAltSolid } from 'react-icons/lia';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { tailwindContainerClasses } from '../../utils/tailwindClasses';
-import auth from '../../../firebase.config';
+import logo from '../../assets/logo.jpg';
 
 const Dashboard = () => {
 
-    console.log(auth)
     const location = useLocation();
     const path = location.pathname;
     const isAttendees = path.startsWith('/dashboard/') && !path.includes('/purcher');
@@ -18,15 +17,25 @@ const Dashboard = () => {
             {/* ________________________________________________________________________ */}
             <div className='bg-blue-500 pt-20 pb-20'>
                 <div className={tailwindContainerClasses}>
-                    <h1 className='text-[30px] md:text-[40px] font-bold text-white'>International Conference on Global Health and Climate</h1>
+                    <div className="flex gap-4 items-center">
+                        <img
+                          className="rounded-lg"
+                          style={{ height: "100px", width: "auto" }}
+                          src={logo}
+                          alt="Mehedi"
+                        />
+                        <h1 className="text-[30px] md:text-[40px] font-bold text-white">
+                          International Conference on Entrepreneurship, Health and Climate
+                        </h1>
+                    </div>
                     <div className='flex items-center gap-6 pt-3'>
                         <div className='flex items-center gap-1'>
                             <CiCalendarDate size={18} color="white"/>
-                            <p className='text-white text-sm'>Oct 19 to 22, 2025</p>
+                            <p className='text-white text-sm'>8-10 June, 2026</p>
                         </div>
                         <div className='flex items-center gap-1'>
                             <LiaMapMarkerAltSolid size={18} color="white"/>
-                            <p className='text-white text-sm'>Québec, Quebec - Canada</p>
+                            <p className='text-white text-sm'>Fredericton Convention Centre, New Brunswick, Canada</p>
                         </div>
                     </div>
                 </div>
