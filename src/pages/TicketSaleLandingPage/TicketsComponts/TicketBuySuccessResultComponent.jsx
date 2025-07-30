@@ -1,7 +1,9 @@
 import { FaCircleCheck } from "react-icons/fa6";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import usePageTracking from "../../../hooks/usePageTracking";
 
 const TicketBuySuccessResultComponent = () => {
+  usePageTracking();
   const navigate = useNavigate();
   const { data } = useLoaderData();
 

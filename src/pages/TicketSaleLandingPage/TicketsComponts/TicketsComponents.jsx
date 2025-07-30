@@ -3,10 +3,12 @@ import { TicketsDataContext } from "../TicketSaleLandingPage";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import OrderSummaryComponents from "../OrderSummaryComponents/OrderSummaryComponents";
 import { useNavigate } from "react-router-dom";
+import usePageTracking from "../../../hooks/usePageTracking";
 
 
 
 const TicketsComponents = () => {
+    usePageTracking();
     const { 
         steps,setSteps,
         lowTicketsQuantity, setLowTicketsQuantity,

@@ -5,8 +5,10 @@ import { TicketsDataContext } from "../TicketSaleLandingPage";
 import axios from "axios";
 import useAttendeesSpecificTicketTaxDiscountCalculate from "../../../hooks/useAttendeesSpecificTicketTaxDiscountCalculate";
 import { useDropin } from "../../../utils/DropinContext";
+import usePageTracking from "../../../hooks/usePageTracking";
 
 const PaymentComponent = () => {
+  usePageTracking();
   const {
     setSteps,
     // Quantity ________________________________________

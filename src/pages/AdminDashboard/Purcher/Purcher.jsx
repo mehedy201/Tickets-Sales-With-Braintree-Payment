@@ -4,8 +4,10 @@ import useQueryParams from "../../../hooks/useQueryParams";
 import axios from "axios";
 import Pagination from "../../../Components/Pagination";
 import LoadingComponents from "../../../Components/LoadingComponents";
+import usePageTracking from "../../../hooks/usePageTracking";
 
 const Purcher = () => {
+  usePageTracking();
   // URL params
   const { page } = useParams();
 

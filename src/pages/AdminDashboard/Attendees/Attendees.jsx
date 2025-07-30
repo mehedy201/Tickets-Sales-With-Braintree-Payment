@@ -4,8 +4,10 @@ import { useParams, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import useQueryParams from "../../../hooks/useQueryParams";
 import LoadingComponents from "../../../Components/LoadingComponents";
+import usePageTracking from "../../../hooks/usePageTracking";
 
 const Attendees = () => {
+  usePageTracking();
   // URL params
   const { page } = useParams();
 

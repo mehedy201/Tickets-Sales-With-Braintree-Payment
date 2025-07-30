@@ -8,6 +8,7 @@ import OrderSummaryComponents from "../OrderSummaryComponents/OrderSummaryCompon
 import { useNavigate } from "react-router-dom";
 import { useDropin } from "../../../utils/DropinContext";
 import { getNames } from 'country-list';
+import usePageTracking from "../../../hooks/usePageTracking";
 
 const TicketAttendeeBlock = ({ type, attendeeIndex }) => {
   const { register, watch, setValue, formState: { errors } } = useFormContext();
@@ -135,6 +136,7 @@ const TicketAttendeeBlock = ({ type, attendeeIndex }) => {
 };
 
 const AttendeesInfoComponent = () => {
+  usePageTracking();
   const { 
     steps, setSteps,
     lowTicketsQuantity, 

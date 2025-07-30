@@ -13,6 +13,7 @@ import { DropinProvider } from "./utils/DropinContext.jsx";
 import AttendeesInfoComponent from "./pages/TicketSaleLandingPage/TicketsComponts/AttendeesInfoComponent.jsx";
 import PaymentComponent from "./pages/TicketSaleLandingPage/TicketsComponts/PaymentComponent.jsx";
 import TicketBuySuccessResultComponent from "./pages/TicketSaleLandingPage/TicketsComponts/TicketBuySuccessResultComponent.jsx";
+import TagManager from "react-gtm-module";
 // Admin Route Component _____
 const Attendees = React.lazy(() =>
   import("./pages/AdminDashboard/Attendees/Attendees.jsx")
@@ -79,6 +80,13 @@ let router = createBrowserRouter([
     element: <LogIn />,
   },
 ]);
+
+// ✅ Initialize GTM
+const tagManagerArgs = {
+  gtmId: import.meta.env.VITE_GTM_ID
+};
+
+TagManager.initialize(tagManagerArgs); // Initialize once at the start
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>

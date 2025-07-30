@@ -3,9 +3,11 @@ import { LiaMapMarkerAltSolid } from 'react-icons/lia';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { tailwindContainerClasses } from '../../utils/tailwindClasses';
 import logo from '../../assets/logo.jpg';
+import usePageTracking from '../../hooks/usePageTracking';
 
 const Dashboard = () => {
 
+    usePageTracking();
     const location = useLocation();
     const path = location.pathname;
     const isAttendees = path.startsWith('/dashboard/') && !path.includes('/purcher');

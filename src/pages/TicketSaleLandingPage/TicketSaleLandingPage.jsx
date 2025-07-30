@@ -10,10 +10,12 @@ import { createContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import logo from "../../assets/logo.jpg";
 import { useDropin } from "../../utils/DropinContext";
+import usePageTracking from "../../hooks/usePageTracking";
 
 export const TicketsDataContext = createContext();
 
 const TicketSaleLandingPage = () => {
+  usePageTracking();
   const [steps, setSteps] = useState(1);
   // Quantity ________________________________________
   const [lowTicketsQuantity, setLowTicketsQuantity] = useState(0);
